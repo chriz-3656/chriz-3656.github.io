@@ -1,0 +1,117 @@
+
+/* Testimonials/Projects Section Enhancements */
+.testimonial-avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.project-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 255, 85, 0.1);
+}
+
+.stat {
+  font-size: 0.8rem;
+  color: var(--neon-dim);
+  background: rgba(0, 255, 85, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.project-link {
+  background: var(--neon);
+  color: var(--bg);
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  background: var(--neon-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 255, 85, 0.3);
+}
+
+.achievements-summary {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 255, 85, 0.1);
+}
+
+.achievements-summary h2 {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--neon);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.achievement-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 255, 85, 0.1);
+  transition: var(--transition);
+}
+
+.achievement-item:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 15px rgba(0, 255, 85, 0.2);
+  transform: translateY(-5px);
+}
+
+.achievement-item h3 {
+  color: var(--neon);
+  margin-bottom: var(--space-sm);
+  font-size: 1.1rem;
+}
+
+.achievement-item p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mt-lg { margin-top: var(--space-lg); }
+.hidden { display: none; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
