@@ -1,0 +1,198 @@
+
+/* Enhanced Portfolio Cards Styling */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--panel);
+  border: 2px solid rgba(0, 255, 85, 0.1);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  will-change: transform;
+  box-shadow: var(--shadow-md);
+}
+
+.portfolio-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 255, 85, 0.25);
+  border-color: var(--neon);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+  will-change: transform;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(5px);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay h3 {
+  margin-bottom: var(--space-sm);
+  font-size: 1.3rem;
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon);
+}
+
+.portfolio-overlay p {
+  margin-bottom: var(--space-md);
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.portfolio-link {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: 2px solid var(--neon);
+  color: var(--neon);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  align-self: flex-start;
+  font-weight: bold;
+}
+
+.portfolio-link:hover {
+  background: var(--neon);
+  color: var(--bg);
+  box-shadow: 0 0 15px var(--neon);
+  transform: translateY(-2px);
+}
+
+.disclaimer {
+  font-size: 0.75em;
+  color: #ff6b6b;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.badge {
+  font-size: 0.7em;
+  background: #5e81ac;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.badge.hardware { background: #e67e22; }
+.badge.browser { background: #9b59b6; }
+.badge.community { background: #8e44ad; }
+.badge.security { background: #e74c3c; }
+.badge.tools { background: #3498db; }
+.badge.web { background: #2ecc71; }
+
+/* Enhanced Testimonials Cards */
+.testimonial-card {
+  background: var(--panel);
+  border: 2px solid rgba(0, 255, 85, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-card:hover {
+  border-color: var(--neon);
+  box-shadow: 0 8px 16px rgba(0, 255, 85, 0.2);
+  transform: translateY(-5px);
+}
+
+.testimonial-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.testimonial-avatar-container {
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--neon);
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0, 255, 85, 0.3);
+  transition: var(--transition);
+}
+
+.testimonial-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 85, 0.5);
+}
+
+.testimonial-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-sm);
+  color: var(--neon);
+}
+
+.testimonial-info p {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-sm) 0;
+}
+
+.star {
+  color: var(--neon);
+  margin: 0 1px;
+  font-size: 1.2rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+  margin: var(--space-md) 0;
+}
