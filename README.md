@@ -6,7 +6,24 @@ A modern, responsive portfolio website showcasing the work and expertise of Chri
 
 ## 🌐 Live Demo
 
-[https://chrizmonsaji.github.io](https://chrizmonsaji.github.io)
+[https://chriz-3656.github.io](https://chriz-3656.github.io)
+
+## 👨‍💻 About Me
+
+Hi! I'm Chris Mon Saji, a passionate Cyber Security student and Full-Stack Developer with expertise in creating secure, innovative digital solutions. I specialize in penetration testing, ethical hacking, and building robust applications that prioritize both functionality and security.
+
+### 🎯 Core Skills
+- **Cyber Security**: Penetration Testing, Ethical Hacking, Vulnerability Assessment
+- **Full-Stack Development**: Modern web technologies and frameworks
+- **Hardware Security**: Embedded systems and physical security research
+- **Privacy Research**: Consent-based telemetry and privacy frameworks
+
+### 🌟 Specializations
+- Red-team security assessments
+- Hardware-based security tools
+- Privacy-preserving technologies
+- Terminal-based applications
+- Progressive Web Apps
 
 ## 🚀 Features
 
@@ -41,7 +58,7 @@ A modern, responsive portfolio website showcasing the work and expertise of Chri
 ## 📁 Project Structure
 
 ```
-chrizmonsaji.github.io/
+chriz-3656.github.io/
 ├── index.html          # Main landing page
 ├── about.html          # About section
 ├── resume.html         # Professional resume
@@ -96,10 +113,10 @@ chrizmonsaji.github.io/
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/chrizmonsaji/chrizmonsaji.github.io.git
+git clone https://github.com/chriz-3656/chriz-3656.github.io.git
 
 # Navigate to project directory
-cd chrizmonsaji.github.io
+cd chriz-3656.github.io
 
 # Serve locally (using Python)
 python -m http.server 8000
@@ -178,6 +195,27 @@ npx serve .
 - Proper canonical tags
 - Robots.txt configuration
 
+## 🌐 Connect With Me
+
+### Professional Profiles
+- **GitHub**: [@chriz-3656](https://github.com/chriz-3656)
+- **LinkedIn**: [Chris Mon Saji](https://www.linkedin.com/in/chris-mon-saji-/)
+- **Portfolio**: [chriz-3656.github.io](https://chriz-3656.github.io)
+
+### Social Media
+- **Discord**: [@chriz3656](https://discord.com/users/chriz3656)
+- **Reddit**: [@chriz__3656](https://www.reddit.com/user/chriz__3656/)
+- **Instagram**: [@chriz__3656](https://www.instagram.com/chriz__3656/)
+- **Threads**: [@chriz__3656](https://www.threads.net/@chriz__3656)
+- **Xbox**: [@chriz3656](https://www.xbox.com/en-IN/play/user/chriz3656)
+
+### Email
+- **Primary**: chrizmonsaji@gmail.com
+
+## 📞 Quick Contact
+
+For professional inquiries, collaborations, or just to say hello, feel free to reach out through any of the channels above!
+
 ## 🤝 Contributing
 
 While this is a personal portfolio, feedback and suggestions are welcome!
@@ -187,13 +225,6 @@ While this is a personal portfolio, feedback and suggestions are welcome!
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📞 Contact
-
-- **Email**: chrizmonsaji@gmail.com
-- **Discord**: @chriz__3656
-- **GitHub**: [chrizmonsaji](https://github.com/chrizmonsaji)
-- **Portfolio**: [chrizmonsaji.github.io](https://chrizmonsaji.github.io)
 
 ## 📄 License
 

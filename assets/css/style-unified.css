@@ -750,12 +750,14 @@ a:focus {
     padding: var(--space-md);
     overflow-x: auto;
     position: relative;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  .nav-profile,
-  .nav-menu,
-  .nav-footer {
-    display: none;
+  .nav-profile {
+    display: flex;
+    margin-right: var(--space-sm);
+    flex-shrink: 0;
   }
   
   .nav-menu {
@@ -763,18 +765,44 @@ a:focus {
     flex: 1;
     justify-content: center;
     margin: 0;
+    overflow-x: auto;
+    padding: var(--space-xs) 0;
   }
   
   .nav-menu li {
-    margin: 0 var(--space-sm);
+    margin: 0 var(--space-xs);
+    flex-shrink: 0;
   }
   
   .nav-link {
-    padding: var(--space-sm);
+    padding: var(--space-sm) var(--space-xs);
+    min-width: 60px;
+    text-align: center;
   }
   
   .nav-label {
     display: none;
+  }
+  
+  .nav-footer {
+    display: flex;
+    margin-left: var(--space-sm);
+    flex-shrink: 0;
+  }
+  
+  .download-btn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8rem;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: var(--space-xs);
+    margin-left: var(--space-sm);
+  }
+  
+  .social-links a {
+    padding: var(--space-xs);
   }
   
   .hero-card {
@@ -796,6 +824,34 @@ a:focus {
   
   .main-content {
     padding: var(--space-md);
+  }
+  
+  .section {
+    padding: var(--space-xl) var(--space-md);
+  }
+  
+  .card {
+    padding: var(--space-md);
+  }
+  
+  .btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-md);
+  }
+  
+  input, textarea, select {
+    padding: var(--space-sm);
+    font-size: 1rem;
+  }
+  
+  .toast {
+    max-width: 90vw;
+    left: 5vw;
+    right: 5vw;
   }
 }
 
@@ -996,6 +1052,7 @@ a:focus {
   .portfolio-grid {
     grid-template-columns: 1fr;
     gap: var(--space-md);
+    padding: var(--space-sm);
   }
   
   .toast-container {
@@ -1006,7 +1063,98 @@ a:focus {
   
   .toast {
     max-width: none;
+    padding: var(--space-sm);
+    font-size: 0.9rem;
   }
+  
+  .vertical-nav {
+    padding: var(--space-sm);
+  }
+  
+  .nav-link {
+    padding: var(--space-xs) var(--space-xs);
+    min-width: 50px;
+  }
+  
+  .hero-card {
+    padding: var(--space-md);
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--space-md);
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  .hero-heading {
+    font-size: 1.6rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .hero-subheading {
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+  
+  .card {
+    padding: var(--space-sm);
+  }
+  
+  .btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+    width: 100%;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .btn:last-child {
+    margin-bottom: 0;
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-sm);
+  }
+  
+  input, textarea, select {
+    padding: var(--space-sm);
+    font-size: 0.95rem;
+  }
+  
+  .social-links {
+    gap: var(--space-xs);
+  }
+  
+  .social-links a {
+    padding: var(--space-xs);
+    width: 32px;
+    height: 32px;
+  }
+  
+  .download-btn {
+    font-size: 0.75rem;
+    padding: var(--space-xs) var(--space-sm);
+  }
+  
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
 }
 
 /* Reduced Motion Support */
