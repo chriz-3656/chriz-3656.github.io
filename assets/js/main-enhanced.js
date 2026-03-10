@@ -6,6 +6,7 @@
     initNavigation();
     initReveal();
     initPortfolioFilter();
+    initGithubStats();
     initTerminal();
     initContactForm();
   });
@@ -170,6 +171,104 @@
         });
       });
     });
+  }
+
+  async function initGithubStats() {
+    var cards = document.querySelector("[data-github-card]");
+    if (!cards) {
+      return;
+    }
+
+    var reposValue = document.querySelector("[data-github-card='repos'] [data-github-value]");
+    var starsValue = document.querySelector("[data-github-card='stars'] [data-github-value]");
+    var languagesWrap = document.querySelector("[data-github-languages]");
+    var activityWrap = document.querySelector("[data-github-activity]");
+
+    try {
+      var userResponse = await fetch("https://api.github.com/users/chriz-3656");
+      var reposResponse = await fetch("https://api.github.com/users/chriz-3656/repos?per_page=100&sort=updated");
+      var eventsResponse = await fetch("https://api.github.com/users/chriz-3656/events/public?per_page=12");
+
+      if (!userResponse.ok || !reposResponse.ok || !eventsResponse.ok) {
+        throw new Error("GitHub API request failed");
+      }
+
+      var user = await userResponse.json();
+      var repos = await reposResponse.json();
+      var events = await eventsResponse.json();
+
+      var totalStars = repos.reduce(function(sum, repo) {
+        return sum + (repo.stargazers_count || 0);
+      }, 0);
+
+      var languageCounts = repos.reduce(function(map, repo) {
+        if (repo.language) {
+          map[repo.language] = (map[repo.language] || 0) + 1;
+        }
+        return map;
+      }, {});
+
+      var topLanguages = Object.keys(languageCounts)
+        .sort(function(a, b) {
+          return languageCounts[b] - languageCounts[a];
+        })
+        .slice(0, 6);
+
+      if (reposValue) {
+        reposValue.textContent = String(user.public_repos || repos.length || 0);
+      }
+
+      if (starsValue) {
+        starsValue.textContent = String(totalStars);
+      }
+
+      if (languagesWrap) {
+        languagesWrap.innerHTML = "";
+        if (!topLanguages.length) {
+          languagesWrap.innerHTML = "<span class='github-empty'>No language data available.</span>";
+        } else {
+          topLanguages.forEach(function(language) {
+            var chip = document.createElement("span");
+            chip.className = "chip";
+            chip.textContent = language + " · " + languageCounts[language];
+            languagesWrap.appendChild(chip);
+          });
+        }
+      }
+
+      if (activityWrap) {
+        activityWrap.innerHTML = "";
+        var pushEvents = events.filter(function(event) {
+          return event.type === "PushEvent";
+        }).slice(0, 4);
+
+        if (!pushEvents.length) {
+          activityWrap.innerHTML = "<div class='github-activity-item github-empty'>No recent public push events found.</div>";
+        } else {
+          pushEvents.forEach(function(event) {
+            var item = document.createElement("div");
+            item.className = "github-activity-item";
+            var repoName = event.repo && event.repo.name ? event.repo.name.replace(/^chriz-3656\//, "") : "repository";
+            var commits = event.payload && event.payload.commits ? event.payload.commits.length : 0;
+            item.textContent = repoName + " · " + commits + " commit" + (commits === 1 ? "" : "s");
+            activityWrap.appendChild(item);
+          });
+        }
+      }
+    } catch (error) {
+      if (reposValue) {
+        reposValue.textContent = "--";
+      }
+      if (starsValue) {
+        starsValue.textContent = "--";
+      }
+      if (languagesWrap) {
+        languagesWrap.innerHTML = "<span class='github-empty'>GitHub stats unavailable right now.</span>";
+      }
+      if (activityWrap) {
+        activityWrap.innerHTML = "<div class='github-activity-item github-empty'>Recent GitHub activity is unavailable right now.</div>";
+      }
+    }
   }
 
   function initTerminal() {

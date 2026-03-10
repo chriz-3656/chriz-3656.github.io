@@ -814,12 +814,44 @@ textarea {
   gap: 0.9rem;
 }
 
-.github-card img {
-  width: 100%;
-  display: block;
-  border-radius: 20px;
+.github-card-wide {
+  grid-column: span 3;
+}
+
+.github-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.github-language-list,
+.github-activity-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.github-activity-list {
+  flex-direction: column;
+}
+
+.github-activity-item {
+  padding: 0.85rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  color: var(--muted-strong);
+}
+
+.github-empty {
+  color: var(--muted);
+}
+
+@media (max-width: 1024px) {
+  .github-card-wide {
+    grid-column: span 1;
+  }
 }
 
 .project-media {
