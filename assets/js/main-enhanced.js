@@ -6,6 +6,7 @@
     initNavigation();
     initReveal();
     initPortfolioFilter();
+    initTerminal();
     initContactForm();
   });
 
@@ -46,6 +47,7 @@
     var toggle = document.querySelector("[data-nav-toggle]");
     var nav = document.querySelector("[data-site-nav]");
     var header = document.querySelector(".site-header");
+    var mobileMedia = window.matchMedia ? window.matchMedia("(max-width: 960px)") : null;
     if (!toggle || !nav || !header) {
       return;
     }
@@ -80,7 +82,7 @@
     });
 
     document.addEventListener("click", function(event) {
-      if (window.innerWidth > 960 || !header.classList.contains("is-open")) {
+      if ((mobileMedia && !mobileMedia.matches) || !header.classList.contains("is-open")) {
         return;
       }
 
@@ -97,11 +99,19 @@
       }
     });
 
-    window.addEventListener("resize", function() {
-      if (window.innerWidth > 960) {
-        closeNav();
-      }
-    });
+    if (mobileMedia && mobileMedia.addEventListener) {
+      mobileMedia.addEventListener("change", function(event) {
+        if (!event.matches) {
+          closeNav();
+        }
+      });
+    } else {
+      window.addEventListener("resize", function() {
+        if (window.innerWidth > 960) {
+          closeNav();
+        }
+      });
+    }
   }
 
   function initReveal() {
@@ -109,6 +119,10 @@
     if (!items.length) {
       return;
     }
+
+    items.forEach(function(item, index) {
+      item.style.transitionDelay = Math.min(index * 35, 180) + "ms";
+    });
 
     if (!("IntersectionObserver" in window)) {
       items.forEach(function(item) {
@@ -125,8 +139,8 @@
         }
       });
     }, {
-      threshold: 0.14,
-      rootMargin: "0px 0px -40px 0px"
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
     });
 
     items.forEach(function(item) {
@@ -156,6 +170,259 @@
         });
       });
     });
+  }
+
+  function initTerminal() {
+    var root = document.querySelector("[data-terminal-root]");
+    if (!root) {
+      return;
+    }
+
+    var output = root.querySelector("[data-terminal-output]");
+    var form = root.querySelector("[data-terminal-form]");
+    var input = form ? form.querySelector("input[name='command']") : null;
+    var chips = root.querySelectorAll("[data-terminal-chip]");
+    if (!output || !form || !input) {
+      return;
+    }
+
+    var history = [];
+    var historyIndex = -1;
+    var routes = {
+      home: "index.html",
+      about: "about.html",
+      projects: "portfolio.html",
+      portfolio: "portfolio.html",
+      resume: "resume.html",
+      highlights: "testimonials.html",
+      contact: "contact.html",
+      terminal: "terminal.html"
+    };
+
+    var commands = {
+      help: function() {
+        return [
+          line("sys", "Available commands:"),
+          line("cmd", "help, whoami, projects, skills, github, contact, socials, resume, clear"),
+          line("cmd", "open <home|about|projects|resume|highlights|contact|terminal>"),
+          line("tip", "Use arrow up/down for command history.")
+        ];
+      },
+      whoami: function() {
+        return [
+          line("usr", "Chriz"),
+          line("bio", "Cybersecurity & Cyber Forensics student from India."),
+          line("bio", "Focused on Linux systems, automation, privacy research, AI experiments, and practical builds.")
+        ];
+      },
+      projects: function() {
+        return [
+          line("wrk", "Featured repositories:"),
+          line("01", "ATtiny85-USB-Brute-Force-PIN"),
+          line("02", "GHOSTRACE"),
+          line("03", "streamflix"),
+          line("04", "CHATTrace"),
+          line("05", "TiltGuard"),
+          links("open", [
+            { href: "portfolio.html", label: "Open projects page" },
+            { href: "https://github.com/chriz-3656?tab=repositories", label: "GitHub repos", external: true }
+          ])
+        ];
+      },
+      skills: function() {
+        return [
+          line("skl", "Core areas: Cybersecurity, Digital Forensics, Linux Systems, Server Infrastructure, Automation, Web Development, AI Integration."),
+          line("stk", "Stack: C, JavaScript, HTML, CSS, Linux administration, OSINT concepts, server configuration.")
+        ];
+      },
+      github: function() {
+        return [
+          line("git", "Primary GitHub: github.com/chriz-3656"),
+          links("url", [
+            { href: "https://github.com/chriz-3656", label: "Open GitHub", external: true }
+          ])
+        ];
+      },
+      contact: function() {
+        return [
+          line("com", "Email: chrizmonsaji@gmail.com"),
+          line("com", "Discord: chriz3656"),
+          links("go", [
+            { href: "contact.html", label: "Open contact page" },
+            { href: "mailto:chrizmonsaji@gmail.com", label: "Send email", external: true }
+          ])
+        ];
+      },
+      socials: function() {
+        return [
+          line("soc", "Profiles loaded: GitHub, Discord, LinkedIn, Reddit, Instagram, Threads, Xbox."),
+          links("url", [
+            { href: "https://github.com/chriz-3656", label: "GitHub", external: true },
+            { href: "https://www.instagram.com/chriz__3656/", label: "Instagram", external: true },
+            { href: "https://www.linkedin.com/in/chris-mon-saji-/", label: "LinkedIn", external: true }
+          ])
+        ];
+      },
+      resume: function() {
+        return [
+          line("edu", "Diploma in Cyber Forensic and Cyber Security | 2025 - 2028"),
+          links("go", [
+            { href: "resume.html", label: "Open resume page" },
+            { href: "assets/data/cv.pdf", label: "Download CV" }
+          ])
+        ];
+      },
+      banner: function() {
+        return [
+          line("art", "   _____ _          _      "),
+          line("art", "  / ____| |        (_)     "),
+          line("art", " | |    | |__  _ __ _ ______"),
+          line("art", " | |    | '_ \\| '__| |_  /"),
+          line("art", " | |____| | | | |  | |/ / "),
+          line("art", "  \\_____|_| |_|_|  |_/___|")
+        ];
+      },
+      clear: function() {
+        output.innerHTML = "";
+        return [];
+      }
+    };
+
+    chips.forEach(function(chip) {
+      chip.addEventListener("click", function() {
+        runCommand(chip.getAttribute("data-terminal-chip") || "");
+      });
+    });
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      runCommand(input.value);
+    });
+
+    input.addEventListener("keydown", function(event) {
+      if (!history.length) {
+        return;
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        historyIndex = Math.min(historyIndex + 1, history.length - 1);
+        input.value = history[history.length - 1 - historyIndex];
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        historyIndex = Math.max(historyIndex - 1, -1);
+        input.value = historyIndex === -1 ? "" : history[history.length - 1 - historyIndex];
+      }
+    });
+
+    window.setTimeout(function() {
+      input.focus();
+    }, 50);
+
+    function runCommand(rawValue) {
+      var raw = String(rawValue || "").trim();
+      if (!raw) {
+        return;
+      }
+
+      appendLine("chriz@portfolio:~$", raw);
+      history.push(raw);
+      historyIndex = -1;
+      input.value = "";
+
+      var parts = raw.toLowerCase().split(/\s+/);
+      var command = parts[0];
+      var arg = parts.slice(1).join(" ");
+
+      if (command === "open") {
+        if (routes[arg]) {
+          appendNodes([
+            line("nav", "Opening " + arg + "...")
+          ]);
+          window.setTimeout(function() {
+            window.location.href = routes[arg];
+          }, 280);
+        } else {
+          appendNodes([line("err", "Unknown route. Try: open home, open projects, open contact")]);
+        }
+        scrollTerminal();
+        return;
+      }
+
+      if (command === "github") {
+        appendNodes(commands.github());
+        scrollTerminal();
+        return;
+      }
+
+      if (commands[command]) {
+        appendNodes(commands[command]());
+      } else {
+        appendNodes([
+          line("err", "Command not found: " + raw),
+          line("tip", "Type help to see valid commands.")
+        ]);
+      }
+
+      scrollTerminal();
+    }
+
+    function appendLine(meta, text) {
+      appendNodes([line(meta, text)]);
+    }
+
+    function appendNodes(nodes) {
+      nodes.forEach(function(node) {
+        output.appendChild(node);
+      });
+    }
+
+    function line(meta, text) {
+      var row = document.createElement("div");
+      row.className = "terminal-line";
+
+      var metaEl = document.createElement("span");
+      metaEl.className = "terminal-meta";
+      metaEl.textContent = meta;
+
+      var textEl = document.createElement("span");
+      textEl.textContent = text;
+
+      row.appendChild(metaEl);
+      row.appendChild(textEl);
+      return row;
+    }
+
+    function links(meta, items) {
+      var row = document.createElement("div");
+      row.className = "terminal-line";
+
+      var metaEl = document.createElement("span");
+      metaEl.className = "terminal-meta";
+      metaEl.textContent = meta;
+
+      var wrap = document.createElement("div");
+      wrap.className = "terminal-links";
+
+      items.forEach(function(item) {
+        var link = document.createElement("a");
+        link.href = item.href;
+        link.textContent = item.label;
+        if (item.external) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        wrap.appendChild(link);
+      });
+
+      row.appendChild(metaEl);
+      row.appendChild(wrap);
+      return row;
+    }
+
+    function scrollTerminal() {
+      output.scrollTop = output.scrollHeight;
+    }
   }
 
   async function initContactForm() {

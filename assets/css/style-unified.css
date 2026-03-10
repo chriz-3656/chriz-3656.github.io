@@ -26,7 +26,7 @@
   --radius-sm: 14px;
   --radius-md: 22px;
   --radius-lg: 30px;
-  --container: 1180px;
+  --container: 1100px;
   --sidebar-width: 18.5rem;
   --transition: 180ms ease;
   --font-body: "Inter", "Zen Kaku Gothic New", "Segoe UI", sans-serif;
@@ -42,13 +42,17 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  font-size: 15px;
   font-family: var(--font-body);
   color: var(--text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   background:
     radial-gradient(circle at 15% 12%, rgba(167, 255, 74, 0.1), transparent 22%),
     radial-gradient(circle at 84% 10%, rgba(64, 145, 255, 0.08), transparent 18%),
@@ -102,7 +106,7 @@ textarea {
 }
 
 .site-shell {
-  width: min(100% - 2rem, var(--container));
+  width: min(100% - 2.5rem, var(--container));
   margin: 0 auto;
 }
 
@@ -113,6 +117,7 @@ textarea {
   bottom: 1rem;
   width: min(var(--sidebar-width), calc(100vw - 2rem));
   z-index: 70;
+  will-change: transform;
 }
 
 .site-header .site-shell {
@@ -202,8 +207,9 @@ textarea {
   border-radius: 0;
   color: var(--text);
   background: transparent;
-  transition: color var(--transition), transform var(--transition);
+  transition: color 220ms ease, transform 220ms ease, background-color 220ms ease, border-color 220ms ease;
   z-index: 95;
+  will-change: transform;
 }
 
 .nav-toggle:hover,
@@ -259,18 +265,18 @@ textarea {
 }
 
 .page-main {
-  padding: 1rem 0 4rem calc(var(--sidebar-width) + 2.5rem);
+  padding: 0.75rem 0 3.5rem calc(var(--sidebar-width) + 2.15rem);
   min-width: 0;
 }
 
 .site-footer {
-  padding-left: calc(var(--sidebar-width) + 2.5rem);
+  padding-left: calc(var(--sidebar-width) + 2.15rem);
 }
 
 .hero,
 .page-hero {
   display: grid;
-  gap: 1.6rem;
+  gap: 1.2rem;
 }
 
 .hero {
@@ -318,7 +324,7 @@ textarea {
 }
 
 .hero-panel {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .hero-title,
@@ -340,10 +346,10 @@ textarea {
 }
 
 .title-script {
-  margin-top: 1rem;
+  margin-top: 0.7rem;
   color: var(--muted-strong);
   font-family: var(--font-jp);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -710,7 +716,7 @@ textarea {
 
 .stats-grid {
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .grid-two,
@@ -720,7 +726,8 @@ textarea {
 
 .grid-three,
 .portfolio-grid,
-.signals-grid {
+.signals-grid,
+.github-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -735,7 +742,7 @@ textarea {
 .timeline-card,
 .contact-card,
 .project-card {
-  padding: 1.2rem;
+  padding: 1rem;
 }
 
 .metric-value {
@@ -752,7 +759,9 @@ textarea {
 }
 
 .section {
-  margin-top: 4rem;
+  margin-top: 3rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .section-head {
@@ -760,7 +769,7 @@ textarea {
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .section-title,
@@ -791,13 +800,26 @@ textarea {
 }
 
 .page-panel {
-  padding: 1.7rem 1.8rem;
+  padding: 1.35rem 1.4rem;
 }
 
 .project-card {
   display: grid;
   gap: 1rem;
   border-radius: var(--radius-md);
+}
+
+.github-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.github-card img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .project-media {
@@ -818,8 +840,8 @@ textarea {
 .project-cover {
   position: relative;
   height: 100%;
-  min-height: 220px;
-  padding: 1rem;
+  min-height: 200px;
+  padding: 0.9rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1030,6 +1052,144 @@ textarea {
   color: #ff7e7e;
 }
 
+.terminal-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(167, 255, 74, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(10, 16, 12, 0.98), rgba(6, 10, 8, 0.98));
+  box-shadow: var(--shadow);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.terminal-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.terminal-dot:first-child {
+  background: #ff7b72;
+}
+
+.terminal-dot:nth-child(2) {
+  background: #f9c74f;
+}
+
+.terminal-dot:nth-child(3) {
+  background: #90be6d;
+}
+
+.terminal-title {
+  margin-left: 0.55rem;
+  color: var(--muted-strong);
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+}
+
+.terminal-screen {
+  min-height: 22rem;
+  max-height: 32rem;
+  overflow: auto;
+  padding: 1rem;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.terminal-line {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  margin-bottom: 0.55rem;
+}
+
+.terminal-line strong {
+  color: var(--accent);
+}
+
+.terminal-meta {
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.terminal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.terminal-links a {
+  color: var(--accent);
+}
+
+.terminal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0 1rem 1rem;
+}
+
+.terminal-chip {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted-strong);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.terminal-chip:hover,
+.terminal-chip:focus-visible {
+  color: var(--text);
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.terminal-input-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.terminal-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.terminal-input::placeholder {
+  color: var(--muted);
+}
+
 .site-footer {
   padding-bottom: 3rem;
 }
@@ -1040,7 +1200,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem 1.2rem;
+  padding: 1rem 1.1rem;
   border-radius: var(--radius-lg);
   background: rgba(10, 16, 12, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1097,7 +1257,8 @@ textarea {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 560ms ease, transform 560ms ease;
+  transition: opacity 520ms cubic-bezier(.22,1,.36,1), transform 520ms cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -1112,7 +1273,7 @@ textarea {
 
   .page-main,
   .site-footer {
-    padding-left: calc(var(--sidebar-width) + 1.75rem);
+    padding-left: calc(var(--sidebar-width) + 1.4rem);
   }
 
   .hero,
@@ -1147,7 +1308,7 @@ textarea {
     width: min(18rem, calc(100vw - 4.5rem));
     max-width: none;
     transform: translateX(-100%);
-    transition: transform 220ms ease;
+    transition: transform 240ms cubic-bezier(.22,1,.36,1);
     pointer-events: none;
   }
 
@@ -1172,7 +1333,7 @@ textarea {
     display: inline-flex;
     position: fixed;
     top: 1rem;
-    left: 1rem;
+    right: 1rem;
     z-index: 90;
     width: 2.9rem;
     height: 2.9rem;
@@ -1214,7 +1375,28 @@ textarea {
   .page-main,
   .site-footer {
     padding-left: 0;
-    padding-top: 5rem;
+    padding-top: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1237,7 +1419,7 @@ textarea {
 
   .nav-toggle {
     top: 0.75rem;
-    left: 0.75rem;
+    right: 0.75rem;
   }
 
   .hero-panel,
@@ -1247,8 +1429,18 @@ textarea {
   .project-card,
   .quote-card,
   .timeline-card,
-  .contact-card {
-    padding: 1rem;
+  .contact-card,
+  .terminal-screen {
+    padding: 0.9rem;
+  }
+
+  .terminal-input-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .terminal-prompt {
+    white-space: normal;
   }
 
   .hero-actions,
