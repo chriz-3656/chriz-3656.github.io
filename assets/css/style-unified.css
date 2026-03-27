@@ -1253,6 +1253,15 @@ textarea {
   font-size: 0.92rem;
 }
 
+.footer-disclaimer {
+  max-width: 42rem;
+  margin-top: 0.55rem;
+}
+
+.terminal-hint-line {
+  color: var(--muted-strong);
+}
+
 .social-icon-row {
   display: flex;
   flex-wrap: wrap;

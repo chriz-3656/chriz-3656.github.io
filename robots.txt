@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chrizmonsaji.github.io/sitemap.xml
-
-# Prevent indexing of certain files if needed
-# Disallow: /private/
-# Disallow: /temp/
+Sitemap: https://chriz-3656.github.io/sitemap.xml
