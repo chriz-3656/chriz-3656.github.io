@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://chriz-3656.github.io/sitemap.xml
