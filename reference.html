@@ -103,63 +103,62 @@
   <section>
     <div class="container">
       
-      <div class="grid">
-        <!-- Profile APIs -->
-        <article class="card api-card reveal">
-          <h3>User Profile APIs</h3>
-          <p>Endpoints for fetching identity and social data.</p>
-          <div class="endpoint-block">
-            <span class="method">GET</span><span class="url">/users/:username</span><br>
-            <span class="method">GET</span><span class="url">/user</span> (Authenticated)<br>
-            <span class="method">GET</span><span class="url">/users/:username/followers</span><br>
-            <span class="method">GET</span><span class="url">/users/:username/orgs</span>
+      <!-- User Profile Section -->
+      <div id="userProfileSection" style="display:none; margin-bottom:50px;">
+        <h2 class="section-title reveal">Profile</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+          <div class="stat reveal">
+            <h2 id="userRepos">--</h2>
+            <p>PUBLIC REPOS</p>
           </div>
-        </article>
-
-        <!-- Repository APIs -->
-        <article class="card api-card reveal">
-          <h3>Repository APIs</h3>
-          <p>Core endpoints for codebase management and traffic.</p>
-          <div class="endpoint-block">
-            <span class="method">GET</span><span class="url">/users/:username/repos</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/languages</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/releases/latest</span>
+          <div class="stat reveal">
+            <h2 id="userFollowers">--</h2>
+            <p>FOLLOWERS</p>
           </div>
-        </article>
-
-        <!-- Commits & PRs -->
-        <article class="card api-card reveal">
-          <h3>Activity & Pulse</h3>
-          <p>Track changes, commits, and collaborative requests.</p>
-          <div class="endpoint-block">
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/commits</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/pulls</span><br>
-            <span class="method">GET</span><span class="url">/users/:username/events</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/readme</span>
+          <div class="stat reveal">
+            <h2 id="userFollowing">--</h2>
+            <p>FOLLOWING</p>
           </div>
-        </article>
-
-        <!-- Security APIs -->
-        <article class="card api-card reveal">
-          <h3>Security & Alerts</h3>
-          <p>Endpoints for vulnerability scanning and secret detection.</p>
-          <div class="endpoint-block">
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/dependabot/alerts</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/code-scanning/alerts</span><br>
-            <span class="method">GET</span><span class="url">/repos/:owner/:repo/secret-scanning/alerts</span>
+          <div class="stat reveal">
+            <h2 id="userGists">--</h2>
+            <p>PUBLIC GISTS</p>
           </div>
-        </article>
+        </div>
       </div>
 
-      <div class="card reveal" style="margin-top:50px;">
-        <h3>Technical Manifest</h3>
-        <p style="margin-bottom:20px; line-height:1.8;">Use these endpoints to integrate live telemetry into your systems. For the full specification, refer to the official documentation below.</p>
-        
-        <div class="hero-buttons">
-          <a href="https://docs.github.com/en/rest" target="_blank" class="btn primary">REST Docs</a>
-          <a href="https://docs.github.com/en/graphql" target="_blank" class="btn secondary">GraphQL Docs</a>
+      <!-- Repositories Section -->
+      <div id="reposSection" style="display:none; margin-bottom:50px;">
+        <h2 class="section-title reveal">Projects</h2>
+        <div id="reposList" class="grid">
+          <!-- Repos will be populated here -->
         </div>
+      </div>
+
+      <!-- Languages Section -->
+      <div id="languagesSection" style="display:none; margin-bottom:50px;">
+        <h2 class="section-title reveal">Languages</h2>
+        <div id="languagesList" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+          <!-- Languages will be populated here -->
+        </div>
+      </div>
+
+      <!-- Recent Activity Section -->
+      <div id="activitySection" style="display:none; margin-bottom:50px;">
+        <h2 class="section-title reveal">Recent Activity</h2>
+        <div id="activityList" class="timeline">
+          <!-- Activity will be populated here -->
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div id="loadingState" class="card reveal" style="text-align: center; padding: 50px;">
+        <p style="font-size: 1.2rem; font-weight: 800;">FETCHING GITHUB DATA...</p>
+      </div>
+
+      <!-- Error state -->
+      <div id="errorState" style="display:none;" class="card reveal" style="text-align: center; padding: 50px; border-color: #ff4a4a;">
+        <p style="font-size: 1.2rem; font-weight: 800; color: #ff4a4a;">ERROR LOADING DATA</p>
+        <p id="errorMessage" style="margin-top: 10px;"></p>
       </div>
 
     </div>
