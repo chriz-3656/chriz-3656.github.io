@@ -4,9 +4,13 @@
   "description": "![Portfolio Preview](assets/img/avatar.jpg)",
   "main": "index.js",
   "scripts": {
+    "build:css": "cleancss -o assets/css/style-unified.min.css assets/css/style-unified.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.0"
+  }
 }
