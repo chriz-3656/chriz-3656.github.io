@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Reference | Chriz Grimoire</title>
+  <meta name="description" content="A curated collection of GitHub REST API endpoints and developer resources for cybersecurity and automation workflows.">
+  <meta name="author" content="Chriz">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style-unified.min.css">
+  <style>
+    .api-card {
+      margin-bottom: 40px;
+    }
+    .endpoint-block {
+      background: var(--bg2);
+      border: 2px solid black;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+      font-family: 'monospace';
+      overflow-x: auto;
+      box-shadow: 4px 4px 0 black;
+    }
+    .method {
+      color: var(--green2);
+      font-weight: 900;
+      margin-right: 10px;
+    }
+    .url {
+      color: var(--text);
+      opacity: 0.8;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border: 3px solid black;
+      border-radius: 14px;
+      font-weight: 800;
+      background: var(--card);
+      box-shadow: 5px 5px 0 black;
+      margin-top: 20px;
+    }
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #888;
+    }
+    .status-online { background: var(--green2); box-shadow: 0 0 10px var(--green2); }
+    .status-offline { background: #ff4a4a; box-shadow: 0 0 10px #ff4a4a; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span>日本語</span>
+        <div class="logo-box">Chriz</div>
+      </a>
+      <div class="nav-actions">
+        <div class="nav-btn" id="themeToggle" title="Toggle Theme"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg></div>
+        <button class="nav-btn" id="menuToggle" title="Open Menu"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg></button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="navMenu" class="nav-menu">
+    <button id="navMenuClose" class="nav-menu-close" aria-label="Close Menu">
+      <svg viewBox="0 0 24 24" width="32" height="32"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+    </button>
+    <div class="nav-menu-links">
+      <a href="index.html" class="nav-menu-link">Home</a>
+      <a href="about.html" class="nav-menu-link">About</a>
+      <a href="portfolio.html" class="nav-menu-link">Projects</a>
+      <a href="resume.html" class="nav-menu-link">Resume</a>
+      <a href="testimonials.html" class="nav-menu-link">Highlights</a>
+      <a href="terminal.html" class="nav-menu-link">Terminal</a>
+      <a href="reference.html" class="nav-menu-link">Grimoire</a>
+      <a href="contact.html" class="nav-menu-link">Contact</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="mini-badge reveal">RESOURCES • API • TOOLS</div>
+      <h1 class="hero-title reveal">Developer <span class="highlight">Grimoire</span>.</h1>
+      <p class="hero-desc reveal">A high-tech manual of GitHub REST API endpoints for building automation, OSINT scanners, and immersive systems.</p>
+      
+      <div id="githubStatus" class="status-badge reveal">
+        <div class="status-dot"></div>
+        <span class="status-text">FETCHING GITHUB STATUS...</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      
+      <div class="grid">
+        <!-- Profile APIs -->
+        <article class="card api-card reveal">
+          <h3>User Profile APIs</h3>
+          <p>Endpoints for fetching identity and social data.</p>
+          <div class="endpoint-block">
+            <span class="method">GET</span><span class="url">/users/:username</span><br>
+            <span class="method">GET</span><span class="url">/user</span> (Authenticated)<br>
+            <span class="method">GET</span><span class="url">/users/:username/followers</span><br>
+            <span class="method">GET</span><span class="url">/users/:username/orgs</span>
+          </div>
+        </article>
+
+        <!-- Repository APIs -->
+        <article class="card api-card reveal">
+          <h3>Repository APIs</h3>
+          <p>Core endpoints for codebase management and traffic.</p>
+          <div class="endpoint-block">
+            <span class="method">GET</span><span class="url">/users/:username/repos</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/languages</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/releases/latest</span>
+          </div>
+        </article>
+
+        <!-- Commits & PRs -->
+        <article class="card api-card reveal">
+          <h3>Activity & Pulse</h3>
+          <p>Track changes, commits, and collaborative requests.</p>
+          <div class="endpoint-block">
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/commits</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/pulls</span><br>
+            <span class="method">GET</span><span class="url">/users/:username/events</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/readme</span>
+          </div>
+        </article>
+
+        <!-- Security APIs -->
+        <article class="card api-card reveal">
+          <h3>Security & Alerts</h3>
+          <p>Endpoints for vulnerability scanning and secret detection.</p>
+          <div class="endpoint-block">
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/dependabot/alerts</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/code-scanning/alerts</span><br>
+            <span class="method">GET</span><span class="url">/repos/:owner/:repo/secret-scanning/alerts</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="card reveal" style="margin-top:50px;">
+        <h3>Technical Manifest</h3>
+        <p style="margin-bottom:20px; line-height:1.8;">Use these endpoints to integrate live telemetry into your systems. For the full specification, refer to the official documentation below.</p>
+        
+        <div class="hero-buttons">
+          <a href="https://docs.github.com/en/rest" target="_blank" class="btn primary">REST Docs</a>
+          <a href="https://docs.github.com/en/graphql" target="_blank" class="btn secondary">GraphQL Docs</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Chriz Portfolio • <a href="reference.html" style="color:inherit;">Grimoire</a>
+  </footer>
+
+  <script src="assets/js/main-enhanced.min.js?v=1.0.2" defer></script>
+</body>
+</html>
