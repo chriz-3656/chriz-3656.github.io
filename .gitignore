@@ -1,7 +1,7 @@
 ```
-# Build artifacts
-*.min.css
-*.min.js
+# Build artifacts (keeping optimized scripts for reference but allowing minified assets for live site)
+# *.min.css
+# *.min.js
 *.optimized.css
 *.optimized.js
 performance-build.sh
