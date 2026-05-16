@@ -133,6 +133,166 @@ nav {
   padding: 70px 0 60px;
 }
 
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+}
+
+.avatar-container {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 8px solid black;
+  overflow: hidden;
+  box-shadow: 15px 15px 0 black, 0 0 50px var(--glow);
+  z-index: 2;
+  background: black;
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  filter: grayscale(1) contrast(1.1) brightness(0.9);
+  transition: .5s ease;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(183, 215, 89, 0.2), transparent);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+.avatar-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+.avatar-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+  opacity: 0.6;
+  filter: blur(40px);
+  z-index: 1;
+}
+
+.avatar-particles .particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--green2);
+  border: 2px solid black;
+  box-shadow: 0 0 10px var(--green2);
+  z-index: 3;
+}
+
+.pixel-accent {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--green3);
+  border: 3px solid black;
+  z-index: 4;
+}
+
+.ui-detail {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--green2);
+  background: black;
+  padding: 4px 10px;
+  border: 2px solid var(--green2);
+  box-shadow: 4px 4px 0 black;
+  z-index: 4;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@media (max-width: 1200px) {
+  .hero-layout {
+    gap: 40px;
+  }
+  .hero-avatar-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+  .avatar-container {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+  .hero-content {
+    order: 1;
+  }
+  .hero-avatar-wrapper {
+    order: 2;
+    margin: 0 auto;
+  }
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-avatar-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+  .avatar-container {
+    width: 220px;
+    height: 220px;
+  }
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
