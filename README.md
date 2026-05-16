@@ -59,12 +59,15 @@ Hi! I'm Chris Mon Saji, a passionate Cyber Security student and Full-Stack Devel
 
 ```
 chriz-3656.github.io/
-├── index.html          # Main landing page
-├── about.html          # About section
-├── resume.html         # Professional resume
-├── portfolio.html      # Project showcase
-├── testimonials.html   # Client feedback
-├── contact.html        # Contact form
+├── index.html          # Main landing page (accessible at /)
+├── about.html          # About section (accessible at /about)
+├── resume.html         # Professional resume (accessible at /resume)
+├── portfolio.html      # Project showcase (accessible at /portfolio)
+├── blog.html           # Blog or news section (accessible at /blog)
+├── terminal.html       # Terminal experience (accessible at /terminal)
+├── reference.html      # Reference or links page (accessible at /reference)
+├── testimonials.html   # Client feedback (accessible at /testimonials)
+├── contact.html        # Contact form (accessible at /contact)
 ├── sitemap.xml         # SEO sitemap
 ├── robots.txt          # Search engine directives
 ├── assets/
