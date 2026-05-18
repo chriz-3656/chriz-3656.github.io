@@ -100,11 +100,20 @@
     var items = document.querySelectorAll(".reveal");
     if (!items.length) return;
 
+    // Trigger reveal for items already in view immediately
+    function checkInitialView() {
+      items.forEach(function(item) {
+        var rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          item.classList.add("is-visible");
+        }
+      });
+    }
+
     // Fallback if IntersectionObserver is missing
     if (!("IntersectionObserver" in window)) {
-      items.forEach(function(item) {
-        item.classList.add("is-visible");
-      });
+      checkInitialView();
+      window.addEventListener("scroll", checkInitialView);
       return;
     }
 
@@ -116,13 +125,38 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: "0px" // Using simplest possible value for maximum compatibility
+      threshold: 0.05,
+      rootMargin: "50px"
     });
 
     items.forEach(function(item) {
       observer.observe(item);
     });
+
+    // Handle dynamically added elements
+    var dynamicObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element
+            if (node.classList.contains('reveal')) {
+              observer.observe(node);
+            }
+            node.querySelectorAll('.reveal').forEach(function(child) {
+              observer.observe(child);
+            });
+          }
+        });
+      });
+    });
+
+    dynamicObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Safety timeout: ensure everything reveals after a few seconds if observer fails
+    setTimeout(function() {
+      items.forEach(function(item) {
+        item.classList.add("is-visible");
+      });
+    }, 3000);
   }
 
   function initPortfolioFilter() {
@@ -231,11 +265,19 @@
       // Display recent activity
       displayActivity(events);
       
+      // Force reveal of all newly added items
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      
     } catch (e) {
       console.error('Grimoire error:', e);
       loadingState.style.display = 'none';
       errorState.style.display = 'block';
-      document.getElementById('errorMessage').textContent = e.message;
+      
+      if (e.message.includes('403') || e.message.includes('rate limit')) {
+        document.getElementById('errorMessage').textContent = 'GitHub API rate limit exceeded. Please try again in an hour or check back later.';
+      } else {
+        document.getElementById('errorMessage').textContent = e.message;
+      }
     }
   }
 
@@ -250,13 +292,13 @@
 
   function displayRepositories(repos) {
     const reposList = document.getElementById('reposList');
+    if (!reposList) return;
     reposList.innerHTML = '';
     
     repos.slice(0, 12).forEach(repo => {
       const card = document.createElement('article');
       card.className = 'card project-card reveal';
       
-      const lang = repo.language || 'CODE';
       const stars = repo.stargazers_count || 0;
       const forks = repo.forks_count || 0;
       
@@ -277,10 +319,14 @@
       reposList.appendChild(card);
     });
     
-    document.getElementById('reposSection').style.display = 'block';
+    const section = document.getElementById('reposSection');
+    if (section) section.style.display = 'block';
   }
 
   async function displayLanguages(repos) {
+    const langList = document.getElementById('languagesList');
+    if (!langList) return;
+    
     const languageMap = {};
     
     for (const repo of repos.slice(0, 10)) {
@@ -302,7 +348,6 @@
       .sort((a, b) => b[1] - a[1])
       .slice(0, 8);
     
-    const langList = document.getElementById('languagesList');
     langList.innerHTML = '';
     
     sorted.forEach(([lang, bytes]) => {
@@ -315,13 +360,15 @@
       langList.appendChild(card);
     });
     
-    if (sorted.length > 0) {
-      document.getElementById('languagesSection').style.display = 'block';
+    const section = document.getElementById('languagesSection');
+    if (sorted.length > 0 && section) {
+      section.style.display = 'block';
     }
   }
 
   function displayActivity(events) {
     const activityList = document.getElementById('activityList');
+    if (!activityList) return;
     activityList.innerHTML = '';
     
     const uniqueEvents = [];
