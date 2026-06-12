@@ -1,5 +1,7 @@
 # Chris Mon Saji - Portfolio Website
 
+[![spotify-github-profile](https://spotify-github-profile.kittinanx.com/api/view?uid=31uphm6cgosibg5ugd7ooi55p26a&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&profanity=true&hide_remaster=true&bar_color=00ff00)](https://spotify-github-profile.kittinanx.com/api/view?uid=31uphm6cgosibg5ugd7ooi55p26a&redirect=true)
+
 ![Portfolio Preview](assets/img/avatar.jpg)
 
 A modern, responsive portfolio website showcasing the work and expertise of Chris Mon Saji as a Cyber Security Student and Full-Stack Developer.

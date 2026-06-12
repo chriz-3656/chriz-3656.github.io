@@ -1,4 +1,8 @@
 ```
+# Dependencies
+node_modules/
+package-lock.json
+
 # Build artifacts (keeping optimized scripts for reference but allowing minified assets for live site)
 # *.min.css
 # *.min.js
