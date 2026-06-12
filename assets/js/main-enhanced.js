@@ -379,14 +379,13 @@
       const forks = repo.forks_count || 0;
       
       card.innerHTML = `
-        <div class="project-image" style="font-size: 2rem;">${getLanguageEmoji(repo.language)}</div>
+        <div class="project-image" style="display:flex; align-items:center; justify-content:center;">${getLanguageIcon(repo.language)}</div>
         <div class="project-content">
           <h3>${repo.name}</h3>
           <p>${repo.description || 'No description'}</p>
-          <div style="display: flex; gap: 10px; margin-top: 10px; font-size: 0.9rem; font-weight: 700;">
-            <span>⭐ ${stars}</span>
-            <span>🍴 ${forks}</span>
-            ${repo.language ? `<span>${repo.language}</span>` : ''}
+          <div style="display: flex; gap: 10px; margin-top: 10px; font-size: 0.9rem; font-weight: 700; flex-wrap: wrap;">
+            <img src="https://img.shields.io/badge/Stars-${stars}-00FF00?style=flat-square&logo=github&logoColor=black" alt="Stars">
+            <img src="https://img.shields.io/badge/Forks-${forks}-00FF00?style=flat-square&logo=github&logoColor=black" alt="Forks">
           </div>
           <a href="${repo.html_url}" target="_blank" class="btn secondary" style="margin-top:15px; padding:10px 18px; font-size:0.9rem;">View Repo →</a>
         </div>
@@ -430,7 +429,7 @@
       const card = document.createElement('div');
       card.className = 'stat reveal';
       card.innerHTML = `
-        <h2 style="font-size: 2rem;">${getLanguageEmoji(lang)}</h2>
+        <div style="margin-bottom: 10px;">${getLanguageIcon(lang)}</div>
         <p>${lang}</p>
       `;
       langList.appendChild(card);
@@ -467,7 +466,7 @@
       
       item.innerHTML = `
         <small>${dateStr}</small>
-        <h3>${getEventEmoji(event.type)} ${event.type.replace(/([A-Z])/g, ' $1').toLowerCase()}</h3>
+        <h3 style="display:flex; align-items:center;">${getEventIcon(event.type)} ${event.type.replace(/([A-Z])/g, ' $1').toLowerCase()}</h3>
         <p>${event.repo.name}</p>
       `;
       
@@ -479,24 +478,33 @@
     }
   }
 
-  function getLanguageEmoji(lang) {
-    const emojiMap = {
-      'JavaScript': '📜', 'Python': '🐍', 'Java': '☕', 'C++': '⚙️',
-      'TypeScript': '📘', 'Go': '🐹', 'Rust': '🦀', 'HTML': '🌐',
-      'CSS': '🎨', 'PHP': '🐘', 'Ruby': '💎', 'Swift': '🍎',
-      'Kotlin': '🎯', 'Shell': '🔧', 'SQL': '🗄️', 'Vue': '💚',
-      'React': '⚛️', 'Angular': '🅰️', 'Dockerfile': '🐳', 'JSON': '📦'
+  function getLanguageIcon(lang) {
+    if (!lang) lang = 'Code';
+    const cleanLang = lang.replace(/\s+/g, '%20');
+    const logoMap = {
+      'JavaScript': 'javascript', 'Python': 'python', 'Java': 'java', 'C++': 'cplusplus',
+      'TypeScript': 'typescript', 'Go': 'go', 'Rust': 'rust', 'HTML': 'html5',
+      'CSS': 'css3', 'PHP': 'php', 'Ruby': 'ruby', 'Swift': 'swift',
+      'Kotlin': 'kotlin', 'Shell': 'gnubash', 'SQL': 'mysql', 'Vue': 'vuedotjs',
+      'React': 'react', 'Angular': 'angular', 'Dockerfile': 'docker', 'JSON': 'json'
     };
-    return emojiMap[lang] || '💻';
+    const logo = logoMap[lang] || 'github';
+    return `<img src="https://img.shields.io/badge/-${cleanLang}-121212?style=for-the-badge&logo=${logo}&logoColor=00FF00" alt="${lang}" style="height:32px; border: 2px solid #00FF00; border-radius: 6px;">`;
   }
 
-  function getEventEmoji(eventType) {
-    const emojiMap = {
-      'PushEvent': '📤', 'CreateEvent': '✨', 'DeleteEvent': '🗑️',
-      'PullRequestEvent': '📝', 'IssuesEvent': '⚠️', 'ForkEvent': '🍴',
-      'WatchEvent': '👀', 'ReleaseEvent': '🎉'
+  function getEventIcon(eventType) {
+    const typeMap = {
+      'PushEvent': { label: 'PUSH', logo: 'githubactions' },
+      'CreateEvent': { label: 'CREATE', logo: 'github' },
+      'DeleteEvent': { label: 'DELETE', logo: 'github' },
+      'PullRequestEvent': { label: 'PR', logo: 'github' },
+      'IssuesEvent': { label: 'ISSUE', logo: 'github' },
+      'ForkEvent': { label: 'FORK', logo: 'github' },
+      'WatchEvent': { label: 'STAR', logo: 'github' },
+      'ReleaseEvent': { label: 'RELEASE', logo: 'github' }
     };
-    return emojiMap[eventType] || '🔔';
+    const info = typeMap[eventType] || { label: 'EVENT', logo: 'github' };
+    return `<img src="https://img.shields.io/badge/-${info.label.replace(/\s+/g, '%20')}-00FF00?style=flat-square&logo=${info.logo}&logoColor=black" alt="${info.label}" style="vertical-align: middle; margin-right: 8px;">`;
   }
 
 })();
