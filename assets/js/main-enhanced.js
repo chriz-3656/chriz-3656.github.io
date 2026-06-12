@@ -204,23 +204,96 @@
     var inp = form ? form.querySelector("input") : null;
     if (!out || !form || !inp) return;
 
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      var cmd = inp.value.trim().toLowerCase();
-      inp.value = "";
-      var l = document.createElement("div");
-      l.textContent = "> " + cmd;
-      out.appendChild(l);
+    const commands = {
+      help: () => "Available: whoami, ls, cat <page>, neofetch, status, date, matrix, clear",
+      whoami: () => "CHRIZ // CYBERSECURITY STUDENT & SYSTEMS DEVELOPER. [ACCESS_LEVEL: ADMIN]",
+      ls: () => "about.md  portfolio.md  resume.md  contact.md  grimoire.md  skyrealm.sh",
+      date: () => new Date().toString(),
+      status: async () => {
+        try {
+          const res = await fetch('https://www.githubstatus.com/api/v2/status.json');
+          const data = await res.json();
+          return `GITHUB STATUS: ${data.status.description.toUpperCase()}`;
+        } catch (e) { return "TELEMETRY OFFLINE"; }
+      },
+      cat: (args) => {
+        const page = args[0];
+        if (!page) return "Usage: cat <filename>";
+        const content = {
+          "about.md": "Exploring forensics, ethical hacking, and secure architectures.",
+          "portfolio.md": "Sky Realms SMP, GHOSTRACE OSINT, ATtiny85 USB Brute-forcer.",
+          "resume.md": "Diploma in Cyber Forensic and Cyber Security (2025-2028).",
+          "contact.md": "Frequency: chrizmonsaji@gmail.com | Github: @chriz-3656",
+          "grimoire.md": "Real-time GitHub telemetry and developer resource manual.",
+          "skyrealm.sh": "#!/bin/bash\necho 'Initializing Sky Realms SMP...'\nsleep 1\necho 'Atmospheric systems: ONLINE'"
+        };
+        return content[page] || `cat: ${page}: No such file or directory`;
+      },
+      neofetch: () => {
+        return `
+   <span style="color:var(--green2)">      .      </span>    <span style="color:var(--text)">USER:</span> chriz
+   <span style="color:var(--green2)">     / \\     </span>    <span style="color:var(--text)">OS:</span> EndeavourOS / Mint
+   <span style="color:var(--green2)">    /   \\    </span>    <span style="color:var(--text)">HOST:</span> Sky-Realm-Server
+   <span style="color:var(--green2)">   /     \\   </span>    <span style="color:var(--text)">SHELL:</span> zsh
+   <span style="color:var(--green2)">  /------- \\  </span>    <span style="color:var(--text)">LEVEL:</span> 3656
+   <span style="color:var(--green2)"> /         \\ </span>    <span style="color:var(--text)">AESTHETIC:</span> Cyberpunk
+        `;
+      },
+      sudo: () => "Permission denied: user 'chriz' is not in the sudoers file. This incident will be reported.",
+      matrix: () => {
+        startMatrixEffect(out);
+        return "Initializing digital rain...";
+      }
+    };
 
-      if (cmd === "help") {
-        var h = document.createElement("div");
-        h.textContent = "Available: whoami, projects, contact, clear";
-        out.appendChild(h);
-      } else if (cmd === "clear") {
-        out.innerHTML = "";
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      var fullCmd = inp.value.trim().toLowerCase();
+      inp.value = "";
+      if (!fullCmd) return;
+
+      var parts = fullCmd.split(" ");
+      var cmd = parts[0];
+      var args = parts.slice(1);
+
+      var line = document.createElement("div");
+      line.innerHTML = `<span style="color:var(--green2)">$</span> ${fullCmd}`;
+      out.appendChild(line);
+
+      if (cmd === "clear") {
+        out.innerHTML = "<div>CHRIZ PORTFOLIO v1.0.0</div><div>Type 'help' for commands.</div>";
+      } else if (commands[cmd]) {
+        const res = await commands[cmd](args);
+        if (res) {
+          var responseLine = document.createElement("div");
+          responseLine.style.whiteSpace = "pre-wrap";
+          responseLine.innerHTML = res;
+          out.appendChild(responseLine);
+        }
+      } else {
+        var err = document.createElement("div");
+        err.textContent = `-bash: ${cmd}: command not found`;
+        out.appendChild(err);
       }
       out.scrollTop = out.scrollHeight;
     });
+
+    function startMatrixEffect(container) {
+      const chars = "0101010101010101";
+      let count = 0;
+      const interval = setInterval(() => {
+        const line = document.createElement("div");
+        line.style.color = "var(--green2)";
+        line.style.opacity = Math.random();
+        let text = "";
+        for(let i=0; i<30; i++) text += chars[Math.floor(Math.random()*chars.length)];
+        line.textContent = text;
+        container.appendChild(line);
+        container.scrollTop = container.scrollHeight;
+        count++;
+        if (count > 50) clearInterval(interval);
+      }, 50);
+    }
   }
 
   async function initContactForm() {
