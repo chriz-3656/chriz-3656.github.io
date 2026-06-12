@@ -228,7 +228,7 @@
           "skyrealm.md": "SkyRealm Minecraft Community: A thriving server network for Bedrock. [URL: skyrealm.fun]",
           "teleportcore.md": "Advanced movement utility script for Bedrock. Includes TPA, Warps, and RTP.",
           "spawnprotect.md": "Advanced region protection system with PvP control and interaction blocking.",
-          "varthabot.md": "Multi-user news and utility Discord bot for SkyRealm. [URL: varthabot.skyrealm.fun]"
+          "varthabot.md": "Multi-user news and utility Discord bot for SkyRealm. [URL: vartha.skyrealm.fun]"
         };
         return content[page] || `cat: ${page}: No such file or directory`;
       },
