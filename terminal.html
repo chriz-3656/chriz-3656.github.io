@@ -15,17 +15,44 @@
       color: var(--green2);
       border: 4px solid black;
       border-radius: 24px;
-      padding: 30px;
+      padding: 20px;
       box-shadow: 10px 10px 0 black;
-      font-family: monospace;
-      min-height: 400px;
+      font-family: 'monospace';
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+    .terminal-screen {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      padding-right: 10px;
+    }
+    /* Custom Scrollbar for Terminal */
+    .terminal-screen::-webkit-scrollbar {
+      width: 6px;
+    }
+    .terminal-screen::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .terminal-screen::-webkit-scrollbar-thumb {
+      background: var(--green4);
+      border-radius: 10px;
+    }
+    .terminal-input-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0, 255, 0, 0.1);
     }
     .terminal-input {
       background: transparent;
       border: none;
       color: inherit;
       font-family: inherit;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       width: 100%;
       outline: none;
     }
@@ -73,13 +100,13 @@
   <section>
     <div class="container">
       <article class="terminal-shell reveal" data-terminal-root>
-        <div class="terminal-screen" data-terminal-output style="margin-bottom:20px;">
+        <div class="terminal-screen" data-terminal-output>
           <div>CHRIZ PORTFOLIO v1.0.0</div>
           <div>Type 'help' for commands.</div>
         </div>
         <form data-terminal-form>
-          <div style="display:flex; gap:10px;">
-            <span>$</span>
+          <div class="terminal-input-wrap">
+            <span style="color:var(--green2)">$</span>
             <input type="text" class="terminal-input" autofocus>
           </div>
         </form>
