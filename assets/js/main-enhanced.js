@@ -207,7 +207,7 @@
     const commands = {
       help: () => "Available: whoami, ls, cat <page>, neofetch, status, date, matrix, clear",
       whoami: () => "CHRIZ // CYBERSECURITY STUDENT & SYSTEMS DEVELOPER. [ACCESS_LEVEL: ADMIN]",
-      ls: () => "about.md  portfolio.md  resume.md  contact.md  grimoire.md  skyrealm.sh",
+      ls: () => "about.md  portfolio.md  resume.md  contact.md  grimoire.md  skyrealm.md  teleportcore.md  spawnprotect.md  varthabot.md",
       date: () => new Date().toString(),
       status: async () => {
         try {
@@ -221,11 +221,14 @@
         if (!page) return "Usage: cat <filename>";
         const content = {
           "about.md": "Exploring forensics, ethical hacking, and secure architectures.",
-          "portfolio.md": "Sky Realms SMP, GHOSTRACE OSINT, ATtiny85 USB Brute-forcer.",
+          "portfolio.md": "Archive of technical builds and immersive systems.",
           "resume.md": "Diploma in Cyber Forensic and Cyber Security (2025-2028).",
           "contact.md": "Frequency: chrizmonsaji@gmail.com | Github: @chriz-3656",
           "grimoire.md": "Real-time GitHub telemetry and developer resource manual.",
-          "skyrealm.sh": "#!/bin/bash\necho 'Initializing Sky Realms SMP...'\nsleep 1\necho 'Atmospheric systems: ONLINE'"
+          "skyrealm.md": "SkyRealm Minecraft Community: A thriving server network for Bedrock. [URL: skyrealm.fun]",
+          "teleportcore.md": "Advanced movement utility script for Bedrock. Includes TPA, Warps, and RTP.",
+          "spawnprotect.md": "Advanced region protection system with PvP control and interaction blocking.",
+          "varthabot.md": "Multi-user news and utility Discord bot for SkyRealm. [URL: varthabot.skyrealm.fun]"
         };
         return content[page] || `cat: ${page}: No such file or directory`;
       },
