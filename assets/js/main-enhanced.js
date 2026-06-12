@@ -24,7 +24,23 @@
     safeInit(initMobileMenu, 'initMobileMenu');
     safeInit(initGithubStatus, 'initGithubStatus');
     safeInit(initGrimoireData, 'initGrimoireData');
+    safeInit(initSpotifyRefresh, 'initSpotifyRefresh');
   });
+
+  function initSpotifyRefresh() {
+    const spotifyImages = document.querySelectorAll("img[src*='spotify-github-profile.kittinanx.com']");
+    if (!spotifyImages.length) return;
+
+    setInterval(() => {
+      spotifyImages.forEach(img => {
+        let currentSrc = img.src;
+        // Remove old timestamp if it exists
+        currentSrc = currentSrc.replace(/&t=\d+/, '');
+        // Append new timestamp
+        img.src = currentSrc + '&t=' + new Date().getTime();
+      });
+    }, 15000); // Refresh every 15 seconds
+  }
 
   async function initGithubStatus() {
     const wrap = document.getElementById('githubStatus');
