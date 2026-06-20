@@ -1,34 +1,128 @@
-# Repository Guidelines
+# AGENTS.md
 
-## Project Structure & Module Organization
+This file provides guidance to Qoder (qoder.com) when working with code in this repository.
 
-This repository is a framework-free, multi-page portfolio deployed through GitHub Pages. Top-level HTML files define individual routes: `index.html`, `about.html`, `portfolio.html`, `terminal.html`, `contact.html`, and related pages. Shared resources live under `assets/`:
+## Project Overview
 
-- `assets/css/style-unified.css` is the editable stylesheet; the `.min.css` file is its generated production copy.
-- `assets/js/main-enhanced.js` contains shared ES6+ behavior; keep its minified counterpart synchronized when JavaScript changes.
-- `assets/img/`, `assets/font/`, and `assets/data/` contain images, fonts, and the downloadable CV.
-- `robots.txt` and `sitemap.xml` control search-engine discovery.
+Framework-free, multi-page portfolio website deployed via GitHub Pages. Static HTML pages with shared CSS/JS assets, no build pipeline beyond CSS minification.
 
-There is currently no dedicated test directory.
+## Development Commands
 
-## Build, Test, and Development Commands
+```bash
+# Install dependencies (only clean-css-cli needed)
+npm install
 
-Install the single build dependency with `npm install`. Useful commands are:
+# Local development server
+python3 -m http.server 8000
+# or
+npx serve .
 
-- `python3 -m http.server 8000` — serve the site locally at `http://localhost:8000`.
-- `npm run build:css` — regenerate `assets/css/style-unified.min.css` with CleanCSS.
-- `npm test` — currently a placeholder that exits with an error; do not treat it as a validation suite.
+# Minify CSS after editing style-unified.css
+npm run build:css
+```
 
-GitHub Pages publishes changes from the main branch; no application bundle is required.
+GitHub Pages auto-deploys from main branch. No bundler, no transpilation.
 
-## Coding Style & Naming Conventions
+## Architecture
 
-Use semantic HTML5 and preserve the shared page shell, navigation, metadata, and accessibility attributes across pages. Follow existing two-space indentation in HTML, CSS, and JavaScript. Use kebab-case for CSS classes and asset filenames, camelCase for JavaScript variables/functions, and descriptive initializer names such as `initNavigation`. Keep JavaScript framework-free, component initialization guarded, and browser-compatible. Define reusable colors and spacing as CSS custom properties rather than duplicating literals.
+### File Structure
+- **HTML Pages**: `index.html`, `about.html`, `portfolio.html`, `terminal.html`, `contact.html`, `resume.html`, `blog.html`, `reference.html`, `testimonials.html`
+- **`assets/css/style-unified.css`**: Single unified stylesheet (edit this, then run `npm run build:css`)
+- **`assets/js/main-enhanced.js`**: All JavaScript in one IIFE-wrapped file
+- **`assets/data/`**: Static JSON data and CV PDF
 
-## Testing Guidelines
+### CSS Design System
 
-Perform manual checks after every change. Visit all affected pages at desktop and mobile widths, test navigation, theme persistence, keyboard focus, forms, filters, and terminal interactions. Check the browser console for errors and verify image, font, and internal-link paths. When changing shared CSS or JavaScript, smoke-test at least `index.html`, `portfolio.html`, `terminal.html`, and `contact.html`.
+Colors are defined as CSS custom properties in `:root` (light) and `.dark` (dark theme):
 
-## Commit & Pull Request Guidelines
+```css
+:root {
+  --bg: #eef6d8;      /* Primary background */
+  --card: #f6ffe6;    /* Card backgrounds */
+  --text: #132010;    /* Primary text */
+  --muted: #52614b;   /* Secondary text */
+  --green2: #B7D759;  /* Primary accent */
+  --green4: #689929;  /* Secondary accent */
+}
+```
 
-Recent history follows Conventional Commit prefixes, especially `feat:`, `fix:`, and `chore:`. Write concise, imperative subjects, for example `fix: preserve terminal scroll position`. Keep commits focused. Pull requests should summarize user-visible changes, list manual verification performed, link relevant issues, and include before/after screenshots for visual or responsive updates. Never commit secrets or private Supabase credentials; browser-exposed configuration must be intentionally public and restricted.
+**Always use CSS variables instead of hardcoding colors.** Responsive breakpoints: `1201px`, `1200px`, `768px`, `480px`.
+
+### JavaScript Patterns
+
+All JS is wrapped in an IIFE with `DOMContentLoaded`:
+
+```javascript
+(function() {
+  "use strict";
+  document.addEventListener("DOMContentLoaded", function() {
+    safeInit(initTheme, 'initTheme');
+    safeInit(initPortfolioFilter, 'initPortfolioFilter');
+    // Add new init functions here
+  });
+  // Function definitions follow
+})();
+```
+
+**`safeInit()` pattern**: All feature initialization is wrapped in try/catch to prevent one component's failure from breaking the page:
+
+```javascript
+function safeInit(fn, name) {
+  try { fn(); }
+  catch (e) { console.error("Error in " + name + ":", e); }
+}
+```
+
+**DOM targeting**: Use `data-*` attributes for JS hooks, not class selectors:
+
+```javascript
+// Correct
+document.querySelector('[data-terminal-root]');
+document.getElementById('themeToggle');
+
+// Avoid - use classes for styling only
+document.querySelector('.terminal-root');
+```
+
+**Key init functions**: `initTheme`, `initReveal`, `initPortfolioFilter`, `initTerminal`, `initContactForm`, `initMobileMenu`, `initGithubStatus`, `initGrimoireData`
+
+### localStorage Keys
+
+- `chriz_theme`: `'light'` or `'dark'` - persisted theme preference
+
+### HTML Page Template
+
+Every page follows this structure:
+- Semantic HTML5 (`<header>`, `<main>`, `<section>`, `<footer>`)
+- `.container` wrapper for consistent max-width/padding
+- Open Graph meta tags for social sharing
+- Link to `style-unified.min.css` and `main-enhanced.js`
+- Structured data (JSON-LD) where applicable
+
+### Adding a New Page
+
+1. Create `newpage.html` with semantic structure and meta tags
+2. Link shared CSS/JS assets
+3. Add page-specific init function to `main-enhanced.js`
+4. Register with `safeInit()` in the DOMContentLoaded handler
+5. Add navigation link to the nav menu in all existing pages
+
+### External Integrations
+
+- **Supabase**: Contact form backend (`contact.html`) - browser-exposed config is intentionally public
+- **GitHub API**: Stats fetched client-side in `initGithubStats()` and `initGrimoireData()`
+- **GitHub Status API**: System status indicator via `initGithubStatus()`
+
+## Commit Convention
+
+Use Conventional Commits: `feat:`, `fix:`, `chore:` prefixes with imperative subjects (e.g., `fix: preserve terminal scroll position`).
+
+## Manual Testing
+
+No automated test suite exists. After changes, verify:
+- All pages load at desktop and mobile widths
+- Theme toggle persists across page loads
+- Terminal commands work (`terminal.html`)
+- Portfolio filter buttons work (`portfolio.html`)
+- Contact form submits (`contact.html`)
+- Browser console is error-free

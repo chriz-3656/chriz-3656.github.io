@@ -25,6 +25,8 @@
     safeInit(initGithubStatus, 'initGithubStatus');
     safeInit(initGrimoireData, 'initGrimoireData');
     safeInit(initSpotifyRefresh, 'initSpotifyRefresh');
+    safeInit(initBackToTop, 'initBackToTop');
+    safeInit(initActiveNavLink, 'initActiveNavLink');
   });
 
   function initSpotifyRefresh() {
@@ -183,14 +185,32 @@
     buttons.forEach(function(button) {
       button.addEventListener("click", function() {
         var filter = button.getAttribute("data-filter");
+        
+        // Update active button
         buttons.forEach(function(other) {
           other.classList.remove("active");
         });
         button.classList.add("active");
 
+        // Animate cards
         cards.forEach(function(card) {
           var matches = filter === "all" || card.getAttribute("data-category") === filter;
-          card.style.display = matches ? "block" : "none";
+          
+          if (matches) {
+            card.style.display = "flex";
+            card.classList.remove("filtering-out");
+            card.classList.add("filtering-in");
+            // Remove animation class after it completes
+            setTimeout(function() {
+              card.classList.remove("filtering-in");
+            }, 400);
+          } else {
+            card.classList.add("filtering-out");
+            setTimeout(function() {
+              card.style.display = "none";
+              card.classList.remove("filtering-out");
+            }, 300);
+          }
         });
       });
     });
@@ -521,6 +541,50 @@
     };
     const info = typeMap[eventType] || { label: 'EVENT', logo: 'github' };
     return `<img src="https://img.shields.io/badge/-${info.label.replace(/\s+/g, '%20')}-00FF00?style=flat-square&logo=${info.logo}&logoColor=black" alt="${info.label}" style="vertical-align: middle; margin-right: 8px;">`;
+  }
+
+  function initBackToTop() {
+    // Create back-to-top button if it doesn't exist
+    let btn = document.getElementById('backToTop');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'backToTop';
+      btn.className = 'back-to-top';
+      btn.setAttribute('aria-label', 'Back to top');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>';
+      document.body.appendChild(btn);
+    }
+
+    // Show/hide based on scroll position
+    function toggleVisibility() {
+      if (window.scrollY > 400) {
+        btn.classList.add('is-visible');
+      } else {
+        btn.classList.remove('is-visible');
+      }
+    }
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    toggleVisibility();
+
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  function initActiveNavLink() {
+    // Highlight current page in navigation
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    const navLinks = document.querySelectorAll('.nav-link, .nav-menu-link');
+    
+    navLinks.forEach(function(link) {
+      const href = link.getAttribute('href');
+      const linkPath = href.startsWith('/') ? href.replace(/\/$/, '') || '/' : '/' + href.replace(/\/$/, '');
+      
+      if (currentPath === linkPath || (currentPath === '/' && linkPath === '/')) {
+        link.classList.add('active');
+      }
+    });
   }
 
 })();
