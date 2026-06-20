@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Chriz</title>
-  <meta name="description" content="Project gallery for Chriz featuring repositories across cybersecurity, Linux, AI, and web development.">
+  <meta name="description" content="Project gallery for Chriz featuring repositories across cybersecurity, Linux, AI, mobile, and web development.">
   <meta name="author" content="Chriz">
   <meta name="robots" content="index,follow">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
@@ -13,14 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style-unified.min.css?v=3.6.0">
 </head>
-<body>
-
+<body class="portfolio-page">
   <nav>
     <div class="container nav-inner">
-      <a href="/" class="logo">
-        <span>日本語</span>
-        <div class="logo-box">Chriz</div>
-      </a>
+      <a href="/" class="logo"><span>日本語</span><div class="logo-box">Chriz</div></a>
       <div class="nav-actions">
         <div class="nav-btn" id="themeToggle"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg></div>
         <button class="nav-btn" id="menuToggle" title="Open Menu"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg></button>
@@ -29,9 +25,7 @@
   </nav>
 
   <div id="navMenu" class="nav-menu">
-    <button id="navMenuClose" class="nav-menu-close" aria-label="Close Menu">
-      <svg viewBox="0 0 24 24" width="32" height="32"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
-    </button>
+    <button id="navMenuClose" class="nav-menu-close" aria-label="Close Menu"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg></button>
     <div class="nav-menu-links">
       <a href="/" class="nav-menu-link">Home</a>
       <a href="about" class="nav-menu-link">About</a>
@@ -48,15 +42,15 @@
     <div class="container">
       <div class="mini-badge reveal">RESEARCH • BUILDS • CODE</div>
       <h1 class="hero-title reveal">Project <span class="highlight">Archive</span>.</h1>
-      <p class="hero-desc reveal">A curated collection of tools, experiments, and systems built across the cybersecurity and development landscape.</p>
-      
+      <p class="hero-desc reveal">Tools, experiments, and production systems across cybersecurity, AI, web, mobile, and community platforms.</p>
       <div class="hero-buttons reveal" style="margin-top:20px;">
         <button class="btn secondary active" data-filter="all">All</button>
         <button class="btn secondary" data-filter="security">Security</button>
-        <button class="btn secondary" data-filter="web">Web</button>
+        <button class="btn secondary" data-filter="web">Web &amp; Mobile</button>
         <button class="btn secondary" data-filter="systems">Systems</button>
-        <button class="btn secondary" data-filter="minecraft">Minecraft</button>
+        <button class="btn secondary" data-filter="hardware">Hardware</button>
         <button class="btn secondary" data-filter="community">Community</button>
+        <button class="btn secondary" data-filter="minecraft">Minecraft</button>
       </div>
     </div>
   </section>
@@ -64,133 +58,43 @@
   <section>
     <div class="container">
       <div class="grid">
-        <article class="card project-card reveal" data-category="hardware">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-8-3z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>HARDWARE SECURITY</small>
-            <h3>ATtiny85 USB</h3>
-            <p>USB brute-force tool emulating HID input for security demos.</p>
-            <a href="https://github.com/chriz-3656/ATtiny85-USB-Brute-Force-PIN" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>RED TEAM • NODE.JS</small><h3>AD-analyzer</h3><p>Bypasses client-side anti-debugging controls and extracts endpoints, redirects, and hidden links during authorized testing.</p><a href="https://github.com/chriz-3656/AD-analyzer" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="hardware"><div class="project-content"><small>HARDWARE SECURITY • C</small><h3>ATtiny85 USB Brute-Force PIN</h3><p>ATtiny85 and V-USB HID demonstration that generates four-digit PIN combinations for ethical hardware-security labs.</p><a href="https://github.com/chriz-3656/ATtiny85-USB-Brute-Force-PIN" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>EDUCATION • WEB</small><h3>c-codes</h3><p>Searchable C programs archive with dynamic source previews and downloadable source files and binaries.</p><a href="https://github.com/chriz-3656/c-codes" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="systems"><div class="project-content"><small>TERMINAL APP • PYTHON</small><h3>C-player</h3><p>Keyboard-driven YouTube Music terminal player with queues, playlists, history, and mpv playback.</p><a href="https://github.com/chriz-3656/C-player" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>PWA • WEB</small><h3>CFIS Timetable PWA</h3><p>Installable, offline-capable timetable with live class indicators, day navigation, and responsive design.</p><a href="https://github.com/chriz-3656/cfis-timetable-pwa" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>EPHEMERAL CHAT • SECURITY</small><h3>CHATTrace</h3><p>Session-based anonymous chat tool that keeps messages in memory and removes the service when its terminal closes.</p><a href="https://github.com/chriz-3656/CHATTrace" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>GITHUB PROFILE</small><h3>chriz-3656</h3><p>Source for the GitHub profile README, developer identity, current focus, skills, and project highlights.</p><a href="https://github.com/chriz-3656/chriz-3656" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>PORTFOLIO • WEB</small><h3>chriz-3656.github.io</h3><p>Responsive multi-page portfolio built with semantic HTML, modern CSS, and framework-free JavaScript.</p><a href="https://github.com/chriz-3656/chriz-3656.github.io" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>AI OPERATIONS • PYTHON</small><h3>CHRIZ-AI-Platform</h3><p>AI operations platform for Discord communities, Minecraft servers, and automated infrastructure workflows.</p><a href="https://github.com/chriz-3656/CHRIZ-AI-Platform" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>WEBAR • MINDAR</small><h3>EchoFrame</h3><p>Browser-based augmented reality experience with image-target tracking and responsive video overlays.</p><a href="https://github.com/chriz-3656/echoframe-mindar" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>PWA • DEVICE SENSORS</small><h3>Emo Andro</h3><p>Sensor-aware autonomous companion PWA driven by a behavior loop and Android-accessible hardware.</p><a href="https://github.com/chriz-3656/emo-android" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>OSINT • PYTHON</small><h3>GHOSTRACE</h3><p>OSINT scanner for username discovery, breach checks, domain intelligence, DNS, and network lookups.</p><a href="https://github.com/chriz-3656/GHOSTRACE" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>DISCORD • GITHUB</small><h3>GitCord</h3><p>Discord bot for GitHub communities with webhook relays, showcases, reputation, issue discovery, and release tracking.</p><a href="https://github.com/chriz-3656/GitCord" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>DISCORD • AUTOMATION</small><h3>InstaBot</h3><p>Unofficial Discord-to-Instagram automation bot for managing DMs, inboxes, profiles, and alerts.</p><a href="https://github.com/chriz-3656/InstaBot" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>PRIVACY RESEARCH • CAMERA</small><h3>LENSTrace</h3><p>Consent-based camera snapshot telemetry framework for red-team labs, education, and privacy demonstrations.</p><a href="https://github.com/chriz-3656/LENSTrace" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>PRIVACY RESEARCH • GEOLOCATION</small><h3>NEXUSTrace</h3><p>Consent-based geolocation telemetry beacon with Cloudflare tunneling and real-time terminal events.</p><a href="https://github.com/chriz-3656/NEXUSTrace" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>AI RECON • PYTHON</small><h3>ReconAssistant</h3><p>AI-assisted reconnaissance orchestrator for crawling, endpoint discovery, form analysis, and attack-surface reporting.</p><a href="https://github.com/chriz-3656/ReconAssistant" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>AI • CAREER TECH</small><h3>ResuMetric</h3><p>AI-powered resume ATS analyzer with role detection, profile diagnostics, reports, and cover-letter generation.</p><a href="https://github.com/chriz-3656/resumetric" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>DISCORD • ECONOMY</small><h3>SkyCasino Bot</h3><p>Discord economy and casino bot with persistent balances, safe transactions, mini-games, and interactive controls.</p><a href="https://github.com/chriz-3656/skycasino-bot" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>MUSIC • COMMUNITY</small><h3>SkyMusic</h3><p>Music-focused project for the SkyRealm community ecosystem.</p><a href="https://github.com/chriz-3656/SkyMusic" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="systems"><div class="project-content"><small>LINUX • CONKY</small><h3>SpectreConky</h3><p>Minimal futuristic Conky desktop widget displaying time and date with a transparent Linux-native layout.</p><a href="https://github.com/chriz-3656/SpectreConky" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>IPTV • JAVASCRIPT</small><h3>StreamFlix</h3><p>Netflix-inspired IPTV player supporting M3U playlists, HLS streams, custom URLs, and YouTube playback.</p><a href="https://github.com/chriz-3656/streamflix" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>PWA • PRIVACY</small><h3>TiltGuard</h3><p>Mobile privacy-screen PWA that reacts to unsafe device tilt and multiple detected faces.</p><a href="https://github.com/chriz-3656/TiltGuard" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="web"><div class="project-content"><small>GAME • PWA</small><h3>TiltMaze</h3><p>Motion-controlled canvas maze game with handcrafted levels, procedural play, offline support, and leaderboards.</p><a href="https://github.com/chriz-3656/tiltmaze" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>DISCORD • NEWS</small><h3>VarthaBot</h3><p>Multi-tenant Discord news platform with RSS ingestion, Supabase persistence, OAuth, and a live dashboard.</p><a href="https://github.com/chriz-3656/VarthaBot" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="systems"><div class="project-content"><small>INFRASTRUCTURE • WEB</small><h3>VPS-CTRL</h3><p>Self-hosted VPS dashboard for live monitoring, terminal access, file management, editing, and process control.</p><a href="https://github.com/chriz-3656/VPS-CTRL" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="community"><div class="project-content"><small>DISCORD ACTIVITY • VIDEO</small><h3>WatchCord</h3><p>Self-hosted Discord Activity for synchronized watch parties with YouTube queues and host migration.</p><a href="https://github.com/chriz-3656/WatchCord" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
+        <article class="card project-card reveal" data-category="security"><div class="project-content"><small>OFFENSIVE SECURITY • PYTHON</small><h3>WiFi Exfil Tool</h3><p>Authorized-testing toolkit for studying Wi-Fi credential extraction, exfiltration, and defensive controls.</p><a href="https://github.com/chriz-3656/wifi-exfil-tool" class="btn secondary" target="_blank" rel="noopener noreferrer">GitHub</a></div></article>
 
-        <article class="card project-card reveal" data-category="systems">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>TERMINAL APP</small>
-            <h3>C-player</h3>
-            <p>High-performance terminal music player for YouTube Music.</p>
-            <a href="https://github.com/chriz-3656/C-player" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="web">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M19 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zM5 8h14m-8 4h2v2h-2v-2zm-4 0h2v2H7v-2zm8 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>PWA</small>
-            <h3>CFIS PWA</h3>
-            <p>Timetable app with offline support and mobile-first design.</p>
-            <a href="https://github.com/chriz-3656/cfis-timetable-pwa" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="hardware">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-8-3z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>HARDWARE SECURITY</small>
-            <h3>ATtiny85 USB</h3>
-            <p>Hardware PIN brute-force tool emulating HID input.</p>
-            <a href="https://github.com/chriz-3656/ATtiny85-USB-Brute-Force-PIN" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="minecraft">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5zm0 2.8L19.2 7 12 10.2 4.8 7 12 4.8zM4 8.7l7 3.1v8.4l-7-3.5V8.7zm9 11.5v-8.4l7-3.1v8l-7 3.5z" fill="currentColor"/></svg></div>
-          <div class="project-content">
-            <small>MINECRAFT SCRIPT</small>
-            <h3>TeleportCore</h3>
-            <p>Advanced teleportation behavior pack for Bedrock Edition with TPA, Warps, and RTP.</p>
-            <a href="https://www.curseforge.com/minecraft-bedrock/scripts/teleportcore" class="btn secondary" style="margin-top:20px;" target="_blank">CurseForge</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="minecraft">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.47 4.74-3.02 8.53-7 9.49v-9.49H5V6.3l7-3.11v7.8z" fill="currentColor"/></svg></div>
-          <div class="project-content">
-            <small>MINECRAFT SCRIPT</small>
-            <h3>Spawn Protection</h3>
-            <p>Advanced region protection system with PvP control and interaction blocking for Bedrock.</p>
-            <a href="https://www.curseforge.com/minecraft-bedrock/scripts/spawn-protection" class="btn secondary" style="margin-top:20px;" target="_blank">CurseForge</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="community">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/></svg></div>
-          <div class="project-content">
-            <small>MINECRAFT NETWORK</small>
-            <h3>SkyRealm Community</h3>
-            <p>A thriving Minecraft Bedrock community and server network focused on immersive gameplay.</p>
-            <a href="https://skyrealm.fun" class="btn secondary" style="margin-top:20px;" target="_blank">Visit Site</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="web">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 19l-4-4 4-4v8zm12-4l-4 4v-8l4 4zm-4-3H8v-2h8v2z" fill="currentColor"/></svg></div>
-          <div class="project-content">
-            <small>DISCORD BOT</small>
-            <h3>VarthaBot</h3>
-            <p>Multi-user news and utility Discord bot integrated with the SkyRealm network.</p>
-            <a href="https://vartha.skyrealm.fun" class="btn secondary" style="margin-top:20px;" target="_blank">Visit Site</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="security">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.71-.71A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.71.71v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>PYTHON TOOL</small>
-            <h3>ReconAssistant</h3>
-            <p>Python-based reconnaissance tool for automated security analysis.</p>
-            <a href="https://github.com/chriz-3656/ReconAssistant" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="systems">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>INFRASTRUCTURE</small>
-            <h3>VPS-CTRL</h3>
-            <p>A fast, HTML5-based control interface for managing Virtual Private Servers.</p>
-            <a href="https://github.com/chriz-3656/VPS-CTRL" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="systems">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/></svg></div>
-          <div class="project-content">
-            <small>PYTHON PLATFORM</small>
-            <h3>CHRIZ-AI-Platform</h3>
-            <p>An AI-powered security platform integrating automated workflows.</p>
-            <a href="https://github.com/chriz-3656/CHRIZ-AI-Platform" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card project-card reveal" data-category="security">
-          <div class="project-image"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.71-.71A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.71.71v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <div class="project-content">
-            <small>OSINT</small>
-            <h3>GHOSTRACE</h3>
-            <p>Advanced OSINT scanner for username and breach discovery.</p>
-            <a href="https://github.com/chriz-3656/GHOSTRACE" class="btn secondary" style="margin-top:20px;" target="_blank">GitHub</a>
-          </div>
-        </article>
+        <article class="card project-card reveal" data-category="minecraft"><div class="project-content"><small>MINECRAFT SCRIPT</small><h3>TeleportCore</h3><p>Bedrock behavior pack with TPA, warps, homes, and random teleportation.</p><a href="https://www.curseforge.com/minecraft-bedrock/scripts/teleportcore" class="btn secondary" target="_blank" rel="noopener noreferrer">CurseForge</a></div></article>
+        <article class="card project-card reveal" data-category="minecraft"><div class="project-content"><small>MINECRAFT SCRIPT</small><h3>Spawn Protection</h3><p>Bedrock region-protection system with PvP controls and interaction blocking.</p><a href="https://www.curseforge.com/minecraft-bedrock/scripts/spawn-protection" class="btn secondary" target="_blank" rel="noopener noreferrer">CurseForge</a></div></article>
+        <article class="card project-card reveal" data-category="minecraft"><div class="project-content"><small>MINECRAFT NETWORK</small><h3>SkyRealm Community</h3><p>Minecraft Bedrock community and server network focused on immersive multiplayer gameplay.</p><a href="https://skyrealm.fun" class="btn secondary" target="_blank" rel="noopener noreferrer">Visit Site</a></div></article>
       </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 Chriz Portfolio • <a href="reference" style="color:inherit;">Grimoire</a>
-  </footer>
-
+  <footer>© 2026 Chriz Portfolio • <a href="reference" style="color:inherit;">Grimoire</a></footer>
   <script src="assets/js/main-enhanced.min.js?v=3.6.0" defer></script>
 </body>
 </html>

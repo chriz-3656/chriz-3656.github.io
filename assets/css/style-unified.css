@@ -545,6 +545,21 @@ section {
   margin-bottom: 12px;
 }
 
+.portfolio-page .project-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.portfolio-page .project-content p {
+  margin-bottom: 24px;
+}
+
+.portfolio-page .project-content .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
 /* TIMELINE */
 .timeline {
   display: flex;
