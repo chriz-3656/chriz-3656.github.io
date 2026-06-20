@@ -5,12 +5,19 @@
   "main": "index.js",
   "scripts": {
     "build:css": "cleancss -o assets/css/style-unified.min.css assets/css/style-unified.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx playwright test",
+    "test:walkthrough": "npx playwright test walkthrough --headed",
+    "test:record": "npx playwright test walkthrough",
+    "mcp:playwright": "npx @playwright/mcp --port 8935",
+    "playwright:report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "clean-css-cli": "^5.6.0"
+    "@playwright/mcp": "^0.0.76",
+    "@playwright/test": "^1.61.0",
+    "clean-css-cli": "^5.6.0",
+    "playwright": "^1.61.0"
   }
 }
