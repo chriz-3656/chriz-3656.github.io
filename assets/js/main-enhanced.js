@@ -27,6 +27,7 @@
     safeInit(initSpotifyRefresh, 'initSpotifyRefresh');
     safeInit(initBackToTop, 'initBackToTop');
     safeInit(initActiveNavLink, 'initActiveNavLink');
+    safeInit(initCustomCursor, 'initCustomCursor');
   });
 
   function initSpotifyRefresh() {
@@ -584,6 +585,90 @@
       if (currentPath === linkPath || (currentPath === '/' && linkPath === '/')) {
         link.classList.add('active');
       }
+    });
+  }
+
+  function initCustomCursor() {
+    // Only activate on desktop/laptop with hover capability
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (isTouchDevice || prefersReducedMotion) return;
+    
+    // Create cursor elements
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    
+    const follower = document.createElement('div');
+    follower.className = 'cursor-follower';
+    
+    document.body.appendChild(cursor);
+    document.body.appendChild(follower);
+    document.body.classList.add('custom-cursor-active');
+    
+    let mouseX = 0;
+    let mouseY = 0;
+    let followerX = 0;
+    let followerY = 0;
+    
+    // Track mouse position
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Move main cursor immediately
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    }, { passive: true });
+    
+    // Smooth follower animation
+    function animateFollower() {
+      const speed = 0.15;
+      followerX += (mouseX - followerX) * speed;
+      followerY += (mouseY - followerY) * speed;
+      
+      follower.style.left = followerX + 'px';
+      follower.style.top = followerY + 'px';
+      
+      requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
+    
+    // Hover detection for interactive elements
+    const hoverTargets = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .nav-btn, .btn, .card, .project-card');
+    
+    hoverTargets.forEach(function(target) {
+      target.addEventListener('mouseenter', function() {
+        cursor.classList.add('is-hovering');
+        follower.classList.add('is-hovering');
+      });
+      
+      target.addEventListener('mouseleave', function() {
+        cursor.classList.remove('is-hovering');
+        follower.classList.remove('is-hovering');
+      });
+    });
+    
+    // Click effect
+    document.addEventListener('mousedown', function() {
+      cursor.classList.add('is-clicking');
+      follower.classList.add('is-clicking');
+    });
+    
+    document.addEventListener('mouseup', function() {
+      cursor.classList.remove('is-clicking');
+      follower.classList.remove('is-clicking');
+    });
+    
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', function() {
+      cursor.style.opacity = '0';
+      follower.style.opacity = '0';
+    });
+    
+    document.addEventListener('mouseenter', function() {
+      cursor.style.opacity = '1';
+      follower.style.opacity = '0.6';
     });
   }
 

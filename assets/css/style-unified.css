@@ -982,4 +982,97 @@ footer {
     opacity: 1;
     transform: none;
   }
+  
+  .custom-cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}
+
+/* CUSTOM CURSOR - Desktop/Laptop only */
+@media (hover: hover) and (pointer: fine) {
+  /* Hide default cursor on body */
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  
+  /* Also hide on common interactive elements */
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active input,
+  body.custom-cursor-active textarea,
+  body.custom-cursor-active select,
+  body.custom-cursor-active [role="button"] {
+    cursor: none;
+  }
+  
+  /* Main cursor dot */
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--green2);
+    border: 2px solid black;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+    box-shadow: 0 0 10px var(--green2), 0 0 20px var(--glow);
+  }
+  
+  /* Follower ring */
+  .cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--green2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+  }
+  
+  /* Hover state - expand and glow */
+  .custom-cursor.is-hovering {
+    width: 20px;
+    height: 20px;
+    background: var(--green3);
+    box-shadow: 0 0 20px var(--green2), 0 0 40px var(--glow);
+  }
+  
+  .cursor-follower.is-hovering {
+    width: 60px;
+    height: 60px;
+    border-color: var(--green3);
+    opacity: 0.8;
+  }
+  
+  /* Click state - shrink */
+  .custom-cursor.is-clicking {
+    width: 8px;
+    height: 8px;
+    background: var(--green4);
+  }
+  
+  .cursor-follower.is-clicking {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    border-color: var(--green4);
+  }
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  .cursor-follower {
+    display: none !important;
+  }
 }
