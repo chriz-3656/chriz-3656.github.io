@@ -13,7 +13,7 @@
     safeInit(initParallax, 'initParallax');
     safeInit(injectDoodles, 'injectDoodles');
     safeInit(initDynamicProjects, 'initDynamicProjects');
-    safeInit(initMobileMenu, 'initMobileMenu');
+    safeInit(initSidebar, 'initSidebar');
   });
 
   async function initGithubStats() {
@@ -174,20 +174,29 @@
   }
 
 
-  function initMobileMenu() {
-    const btn = document.getElementById('mobile-menu-btn');
-    const navModule = document.querySelector('.nav-module');
+  
+  function initSidebar() {
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const closeBtn = document.getElementById('sidebar-close');
+    const sidebar = document.getElementById('sys-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
     
-    if (btn && navModule) {
-      btn.addEventListener('click', () => {
-        navModule.classList.toggle('nav-open');
-        if (navModule.classList.contains('nav-open')) {
-          btn.textContent = '[ CLOSE ]';
-        } else {
-          btn.textContent = '[ MENU ]';
-        }
-      });
+    if (!toggleBtn || !sidebar || !overlay) return;
+
+    function openMenu() {
+      sidebar.classList.add('open');
+      overlay.classList.add('active');
     }
+    
+    function closeMenu() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+
+    toggleBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
   }
+
 
 })();

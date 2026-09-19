@@ -10,23 +10,31 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
 <body>
+  
+  <!-- Floating Sidebar Toggle -->
+  <button id="sidebar-toggle" class="sidebar-toggle-btn">[ MENU ]</button>
+
+  <!-- Sidebar -->
+  <aside class="sys-sidebar" id="sys-sidebar">
+    <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed var(--dark); padding-bottom: 15px;">
+      <h2 style="font-size: 1.2rem;">SYSTEM_MENU</h2>
+      <button id="sidebar-close" class="mobile-menu-btn" style="display: block;">[ X ]</button>
+    </div>
+    <ul class="sidebar-links">
+      <li><a href="/">[01] HOME</a></li>
+      <li><a href="/about">[02] ABOUT</a></li>
+      <li><a href="/projects">[03] PROJECTS</a></li>
+      <li><a href="/blog">[04] BLOG</a></li>
+      <li><a href="/contact">[05] CONTACT</a></li>
+    </ul>
+    <div class="sidebar-footer" style="font-family: var(--font-lcd); font-size: 0.8rem; color: var(--gray);">
+      SYS_TIME: <span class="live-clock">00:00:00</span>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
   <main class="dashboard-grid">
-    <nav class="card nav-module col-12">
-      <div class="nav-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <div class="nav-brand">SKY TECH & CRAFTS <span style="font-family: var(--font-lcd); font-size: 0.8rem; color: var(--gray); margin-left: 10px;">スカイ・テック</span></div>
-        <button id="mobile-menu-btn" class="mobile-menu-btn">[ MENU ]</button>
-      </div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/">HOME</a></li>
-        <li><a href="/about">ABOUT</a></li>
-        <li><a href="/projects">PROJECTS</a></li>
-        <li><a href="/blog">BLOG</a></li>
-        <li><a href="/contact">CONTACT</a></li>
-      </ul>
-      <div class="sys-status">
-        SYS_TIME: <span class="live-clock" style="margin-left: 5px;">00:00:00</span> <div class="status-dot" style="margin-left: 10px;"></div>
-      </div>
-    </nav>
+    
 
     
     <!-- LATEST RELEASE POST -->
