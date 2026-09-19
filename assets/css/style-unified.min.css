@@ -645,3 +645,41 @@ img.deco-4 {
   user-select: none;
   transition: transform 0.1s cubic-bezier(0.2, 0, 0.2, 1);
 }
+
+/* Mobile Menu Logic */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: 2px solid var(--dark);
+  font-family: var(--font-lcd);
+  font-size: 1rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--dark);
+  font-weight: bold;
+}
+
+@media (max-width: 991px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  .nav-links, .sys-status {
+    display: none !important;
+  }
+  .nav-module.nav-open .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    border-top: 2px dashed var(--gray);
+    padding-top: 15px;
+  }
+  .nav-module.nav-open .sys-status {
+    display: block !important;
+    width: 100%;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--gray);
+  }
+}

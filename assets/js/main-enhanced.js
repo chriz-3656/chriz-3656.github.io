@@ -13,6 +13,7 @@
     safeInit(initParallax, 'initParallax');
     safeInit(injectDoodles, 'injectDoodles');
     safeInit(initDynamicProjects, 'initDynamicProjects');
+    safeInit(initMobileMenu, 'initMobileMenu');
   });
 
   async function initGithubStats() {
@@ -169,6 +170,23 @@
     } catch (e) {
       grid.innerHTML = '<div class="lcd-text" style="grid-column: 1 / -1; text-align: center; color: red;">[SYS_ERR: FAILED TO FETCH REPOSITORIES]</div>';
       console.error(e);
+    }
+  }
+
+
+  function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const navModule = document.querySelector('.nav-module');
+    
+    if (btn && navModule) {
+      btn.addEventListener('click', () => {
+        navModule.classList.toggle('nav-open');
+        if (navModule.classList.contains('nav-open')) {
+          btn.textContent = '[ CLOSE ]';
+        } else {
+          btn.textContent = '[ MENU ]';
+        }
+      });
     }
   }
 
