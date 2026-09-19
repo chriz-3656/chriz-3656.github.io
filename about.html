@@ -3,152 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Chriz</title>
-  <meta name="description" content="About Chriz, a cybersecurity and cyber forensics student from India focused on Linux systems, automation, and AI.">
-  <meta name="keywords" content="cybersecurity student, Linux enthusiast, cyber forensics, Chriz">
-  <meta name="author" content="Chriz">
-  <meta name="robots" content="index,follow">
+  <title>Chriz | Personal System Dashboard</title>
+  <meta name="description" content="Learn about Chriz, a cybersecurity researcher focusing on Linux, network security, AI automation, and experimental infrastructure.">
+  <meta name="keywords" content="Chriz, Chris Mon Saji, cybersecurity, developer, linux, AI, portfolio, retro UI">
+  <meta property="og:title" content="Chriz | Personal System Dashboard">
+  <meta property="og:description" content="Cybersecurity student and developer specializing in lightweight experimental systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chriz-3656.github.io/about.html">
+  <link rel="stylesheet" href="assets/css/style-unified.css">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style-unified.min.css?v=3.6.0">
 </head>
 <body>
-
-  <nav>
-    <div class="container nav-inner">
-      <a href="/" class="logo">
-        <span>日本語</span>
-        <div class="logo-box">Chriz</div>
-      </a>
-      <div class="nav-links-desktop">
-        <a href="/" class="nav-link">Home</a>
-        <a href="about" class="nav-link">About</a>
-        <a href="portfolio" class="nav-link">Projects</a>
-        <a href="resume" class="nav-link">Resume</a>
-        <a href="terminal" class="nav-link">Terminal</a>
-        <a href="contact" class="nav-link">Contact</a>
+  <main class="dashboard-grid">
+    <nav class="card nav-module col-12">
+      <div class="nav-brand">SKY TECH \& CRAFTS <span style="font-family: var(--font-lcd); font-size: 0.8rem; color: var(--gray); margin-left: 10px;">スカイ・テック</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <div class="sys-status">
+        SYS_TIME: <span class="live-clock" style="margin-left: 5px;">00:00:00</span> <div class="status-dot" style="margin-left: 10px;"></div>
       </div>
-      <div class="nav-actions">
-        <button type="button" class="nav-btn" id="themeToggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg></button>
-        <button type="button" class="nav-btn" id="menuToggle" aria-label="Open menu"><svg viewBox="0 0 24 24" width="32" height="32"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg></button>
+    </nav>
+<section id="about" class="card card-about">
+      <img src="assets/img/deco-3.jpg" class="deco-art deco-3" alt="Temple" style="mix-blend-mode: multiply; filter: grayscale(100%);">
+      <div class="card-header">
+        <h2 class="card-title">ABOUT_ME</h2>
       </div>
-    </div>
-  </nav>
-
-  <div id="navMenu" class="nav-menu">
-    <button id="navMenuClose" class="nav-menu-close" aria-label="Close Menu">
-      <svg viewBox="0 0 24 24" width="32" height="32"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
-    </button>
-    <div class="nav-menu-links">
-      <a href="/" class="nav-menu-link">Home</a>
-      <a href="about" class="nav-menu-link">About</a>
-      <a href="portfolio" class="nav-menu-link">Projects</a>
-      <a href="resume" class="nav-menu-link">Resume</a>
-      <a href="testimonials" class="nav-menu-link">Highlights</a>
-      <a href="terminal" class="nav-menu-link">Terminal</a>
-      <a href="reference" class="nav-menu-link">Grimoire</a>
-      <a href="contact" class="nav-menu-link">Contact</a>
-    </div>
-  </div>
-
-  <section class="hero">
-    <div class="container">
-      <div class="mini-badge reveal">EXPLORATION • SYSTEMS • SECURITY</div>
-      <h1 class="hero-title reveal">The <span class="highlight">Systems</span><br>Mindset.</h1>
-      <p class="hero-desc reveal">
-        I am a cybersecurity student from India dedicated to exploring ethical hacking, Linux infrastructure, and automated security research through practical experimentation.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="grid">
-        <article class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-8-3z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <h3>Education</h3>
-          <p>Currently pursuing a Diploma in Cyber Forensic and Cyber Security (2025-2028).</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
-          <h3>Location</h3>
-          <p>Based in India, working remotely on open-source tools and server infrastructure.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="currentColor"/></svg></div>
-          <h3>Mission</h3>
-          <p>Building secure, immersive digital experiences that prioritize privacy and performance.</p>
-        </article>
+      <div class="content-relative">
+        <div class="about-grid">
+          <div class="about-module">
+            <div class="about-label">FOCUS</div>
+            <div class="about-value">CYBERSECURITY</div>
+          </div>
+          <div class="about-module">
+            <div class="about-label">BUILD</div>
+            <div class="about-value">WEB / AI / INFRA</div>
+          </div>
+          <div class="about-module">
+            <div class="about-label">STACK</div>
+            <div class="about-value">PYTHON / JS / LINUX</div>
+          </div>
+          <div class="about-module">
+            <div class="about-label">STATUS</div>
+            <div class="about-value">LEARNING + BUILDING</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2 class="section-title reveal">Technical Ventures</h2>
-      <div class="grid">
-        <article class="card reveal">
-          <h3>SkyRealm Network</h3>
-          <p>Lead developer and founder of the SkyRealm Minecraft community. Architecting immersive fantasy systems and managing server-side infrastructure for Bedrock Edition.</p>
-        </article>
-        <article class="card reveal">
-          <h3>CurseForge Modding</h3>
-          <p>Creator of advanced behavior packs and scripting-based utilities for Minecraft. Focused on pushing the boundaries of the Bedrock Scripting API with tools like TeleportCore.</p>
-        </article>
-        <article class="card reveal">
-          <h3>VarthaBot News</h3>
-          <p>Developing automated multi-user news systems for Discord, providing real-time technical and community updates to thousands of users.</p>
-        </article>
-        <article class="card reveal">
-          <h3>AI & Systems Engineering</h3>
-          <p>Building local-first AI motion design studios (VideoForge), autonomous social orchestrators, and blazing-fast CLI daemons in Go to bridge ecosystems.</p>
-        </article>
+    </section>
+<section id="skills" class="card card-skills">
+      <div class="card-header">
+        <h2 class="card-title">SKILL_MODULES</h2>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <h2 class="section-title reveal">Current Frequency</h2>
-      <article class="card reveal" style="padding: 15px; display: flex; justify-content: center; background: #121212; border-color: #00ff00; width: max-content; max-width: 100%; margin: 0 auto; overflow-x: auto;">
-        <a href="https://spotify-github-profile.kittinanx.com/api/view?uid=31uphm6cgosibg5ugd7ooi55p26a&redirect=true" target="_blank">
-          <img src="https://spotify-github-profile.kittinanx.com/api/view?uid=31uphm6cgosibg5ugd7ooi55p26a&cover_image=true&theme=default&show_offline=true&background_color=121212&interchange=true&profanity=true&hide_remaster=true&bar_color=00ff00" alt="Spotify" style="display: block; max-width: 100%; border-radius: 6px;">
-        </a>
-      </article>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="https://github.com/chriz-3656" class="footer-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/chrismonsaji" class="footer-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://discord.com/users/chriz3656" class="footer-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
-          Discord
-        </a>
-        <a href="https://www.curseforge.com/members/chriz3656/projects" class="footer-link" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          CurseForge
-        </a>
-
-        <a href="mailto:chrizmonsaji@gmail.com" class="footer-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
-        </a>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3 class="skill-category-title">CYBERSECURITY</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><div class="skill-indicator"></div>Linux</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Networking</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Web Security</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Digital Forensics</li>
+            <li class="skill-item"><div class="skill-indicator"></div>OSINT</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Reverse Engineering</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">DEVELOPMENT</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><div class="skill-indicator"></div>Python</li>
+            <li class="skill-item"><div class="skill-indicator"></div>JavaScript</li>
+            <li class="skill-item"><div class="skill-indicator"></div>HTML / CSS</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Git</li>
+            <li class="skill-item"><div class="skill-indicator"></div>APIs</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">INFRASTRUCTURE</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><div class="skill-indicator"></div>Cloudflare</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Linux Servers</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Docker</li>
+            <li class="skill-item"><div class="skill-indicator"></div>GitHub</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3 class="skill-category-title">AI / EXPERIMENTAL</h3>
+          <ul class="skill-list">
+            <li class="skill-item"><div class="skill-indicator"></div>AI APIs</li>
+            <li class="skill-item"><div class="skill-indicator"></div>MCP</li>
+            <li class="skill-item"><div class="skill-indicator"></div>Automation</li>
+            <li class="skill-item"><div class="skill-indicator"></div>LLM Config</li>
+          </ul>
+        </div>
       </div>
-      <p class="footer-copyright">© 2026 Chriz Portfolio</p>
-    </div>
-  </footer>
+    </section>
+<div class="col-5" style="display: flex; flex-direction: column; gap: 20px;">
+      
+      <!-- 8. EXPERIENCE / TIMELINE -->
+      <section id="experience" class="card">
+        <div class="card-header">
+          <h2 class="card-title">TIMELINE</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="timeline-title">ADVANCED SECURITY PROJECTS</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="timeline-title">AI + INFRASTRUCTURE EXPERIMENTS</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-title">WEB / SERVER PROJECTS</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-title">CYBERSECURITY STUDIES</div>
+          </div>
+        </div>
+      </section>
 
-  <script src="assets/js/main-enhanced.min.js?v=3.6.0" defer></script>
+      <!-- 10. GITHUB / ACTIVITY PANEL -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">ACTIVITY_LOG</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-module">
+            <div class="about-label">REPOSITORIES</div>
+            <div class="about-value lcd-text">--</div>
+          </div>
+          <div class="about-module">
+            <div class="about-label">COMMITS (30D)</div>
+            <div class="about-value lcd-text">--</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; font-family: var(--font-lcd); font-size: 0.8rem; color: var(--dark); border-top: 1px dashed var(--gray); padding-top: 10px;">
+          [SYS_MSG: LIVE SYNC ACTIVE]
+        </div>
+      </section>
+    </div>
+    <footer class="col-12 footer">
+      <div>SKY TECH & CRAFTS // CHRIZ__3656</div>
+      <div>&copy; 2026</div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <div class="status-dot" style="width: 8px; height: 8px;"></div>
+        SYSTEM STATUS: ONLINE
+      </div>
+    </footer>
+  </main>
+  <script src="assets/js/main-enhanced.js"></script>
 </body>
 </html>

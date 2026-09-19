@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chriz | Personal System Dashboard</title>
-  <meta name="description" content="Contact Chriz for collaborations, cybersecurity research, or system development. Connect via GitHub, Email, or LinkedIn.">
+  <meta name="description" content="Explore Chriz's project database, featuring 41+ open-source repositories spanning cybersecurity, AI, Python, and lightweight web apps.">
   <meta name="keywords" content="Chriz, Chris Mon Saji, cybersecurity, developer, linux, AI, portfolio, retro UI">
   <meta property="og:title" content="Chriz | Personal System Dashboard">
   <meta property="og:description" content="Cybersecurity student and developer specializing in lightweight experimental systems.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://chriz-3656.github.io/contact.html">
+  <meta property="og:url" content="https://chriz-3656.github.io/projects.html">
   <link rel="stylesheet" href="assets/css/style-unified.css">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 </head>
@@ -28,18 +28,14 @@
         SYS_TIME: <span class="live-clock" style="margin-left: 5px;">00:00:00</span> <div class="status-dot" style="margin-left: 10px;"></div>
       </div>
     </nav>
-<section id="contact" class="card col-12">
-      <img src="assets/img/deco-1.jpg" class="deco-art deco-1" alt="Decorative Art" style="mix-blend-mode: multiply; filter: grayscale(100%);">
+<section id="projects" class="card card-projects">
+      <img src="assets/img/deco-2.jpg" class="deco-art deco-2" alt="Cityscape" style="mix-blend-mode: multiply; filter: grayscale(100%);">
       <div class="card-header">
-        <h2 class="card-title">COMMS_LINK</h2>
+        <h2 class="card-title">PROJECT_DATABASE</h2>
       </div>
-      <div>
-        <h3 style="font-size: 2rem; margin-bottom: 20px;">Let's build something.</h3>
-        <div class="contact-links">
-          <a href="https://github.com/chriz-3656" class="btn" target="_blank">GITHUB</a>
-          <a href="mailto:chrizmonsaji@gmail.com" class="btn" target="_blank">EMAIL</a>
-          <a href="https://linkedin.com/in/chrismonsaji" class="btn" target="_blank">LINKEDIN</a>
-          <a href="portfolio.html" class="btn btn-primary">FULL PORTFOLIO</a>
+      <div class="projects-grid" id="dynamic-projects-grid">
+        <div class="lcd-text" id="projects-loader" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);">
+          [SYS_MSG: INITIATING REPOSITORY SYNC... FETCHING DATA]
         </div>
       </div>
     </section>
